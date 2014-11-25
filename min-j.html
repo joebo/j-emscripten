@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Minimum Beginning J interpreter</title>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="jquery.mousewheel-min.js"></script>
+    <script src="jquery.terminal-min.js"></script>
+    <style>
+      @font-face {
+        font-family: 'SourceCodePro';
+        src: url('SourceCodePro-Medium.eot');
+        src: url('SourceCodePro-Medium.eot?#iefix') format('embedded-opentype'),
+             url('SourceCodePro-Medium.otf.woff') format('woff'),
+             url('SourceCodePro-Medium.ttf.woff') format('truetype'),
+             url('SourceCodePro-Medium.svg') format('svg');
+      }
+      body {
+        background-color: #fff;
+        color: #242625;
+        font-family: SourceCodePro, monospace;
+        width: 820px;
+        margin: 8px auto 0;
+      }
+      #logo {
+        font-size: 64px;
+        margin-bottom: 3px;
+        position: relative;
+        left: -2px;
+      }
+      #about {
+        font-size: 15px;
+        padding-left: 2px;
+        margin-bottom: 16px;
+      }
+      #console {
+        border-top: 2px solid #242625;
+        border-bottom: 2px solid #242625;
+      }
+
+      #permalink {
+        font-size: small;
+        margin-top: 12px;
+      text-align: right;
+      font-size:6px;
+      }
+      #permalink a {
+        text-decoration: none;
+        color: #aaa;
+        border-bottom: 1px dotted #aaa;
+      }
+      #permalink a:hover {
+        color: #242625;
+        border-bottom: 1px dotted #242625;
+      }
+
+    </style>
+    <link href="jquery.terminal.css" rel="stylesheet"/>
+  </head>
+<body>
+
+<script type="text/javascript">
+  var myterm = false;
+  var Module = {
+    noInitialRun: true,
+    noExitRuntime: true,
+    preRun: [],
+    postRun: [],
+    print: (function() {
+      return function(text) {
+        myterm.echo(text,{
+          finalize: function(div) {
+            div.css("color", "#242625");
+          }
+        });
+      };
+    })()
+  };
+</script>
+<script type="text/javascript" src="j-called.js"></script>
+<script type="text/javascript">
+  // wrapper for the process_wrapper C function
+  var process = Module.cwrap('process_wrapper', null, ['string']);
+</script>
+
+<!-- terminal emulation -->
+using J compiled to JavaScript by f211
+<table>
+  <tr>
+    <td>
+      <div id="console"></div>
+    </td>
+    <td>
+      <canvas id="Canvas" width="200" height="200" style="border:1px solid #000000;">
+      </canvas>
+    </td>
+  </tr>
+</table>
+
+<div>cmd: <input type="text" style="width:200px" id="Input"><input type="button" value="Run" id="Run"><input type="button" value="X" id="Clear"><input type="button" value="Run & X" id="RunAndClear"><input type="button" value="Clear" id="Cls"><input type="button" value="Append" id="Append"></div>
+<br>
+<select class="presets" id="Symbols">
+  <option>Symbols</option>
+</select>
+<select class="presets">
+  <option>Basics</option>
+  <option value="=.">=. Is (local assignment)</option>
+  <option value="=:">=: Is (global assignment)</option>
+  <option value="_">_ Negative Sign • Infinity</option>
+  <option value="NB.">NB. Comment</option>
+  <option value="'">'' String</option>
+</select>
+<select class="presets">
+  <option>Arrays</option>
+  <option value="$">Shape Of • Reshape</option>
+  <option value="#"># Tally • Copy</option>
+  <option value=",">, Ravel • Append</option>
+  <option value=";">; Raze / Link</option>
+    <option value="{.">{. Take</option>
+                        <option value="}.">}. Drop</option>
+    <option value="/">/ Insert • Table</option>
+    <option value="i.">i. Integers • Index of</option>
+</select>
+
+<select class="presets">
+  <option>Math</option>
+  <option value="+">Plus</option>
+  <option value="*">* Signum • Times</option>
+  <option value="-">- Negate • Subtract</option>
+  <option value="%">% Reciprocal • Divide</option>
+    <option value="^">^ Power</option>
+    <option value="^.">^. Natural Log • Log</option>
+    <option value="<."><. Floor • Minimum</option>
+    <option value=">.">>. Ceiling • Maximum</option>
+</select>
+
+
+<select id="Examples">
+  <option>Examples</option>
+</select>
+
+<select id="Interop" class="presets">
+    <option>Interop</option>
+    <option value="'alert' (15!:0) 'hi'">'alert' (15!:0) 'hi'</option>
+    <option value="'drawRect' (15!:0) (10,10,10,10)">'drawRect' (15!:0) (10,10,10,10)</option>
+</select>
+
+<div>
+  Script<br>
+    <textarea style="width:800px; height:100px" id="Script">
+b=: 0 : 0
+abc
+)
+</textarea>
+  <input type="button" value="Run" id="RunScript">
+</div>
+<div id="permalink" style="display:none">
+  <a id="permalinkBase" href="#" style="display:none">last command permalink</a>
+</div>
+
+
+<script>
+jQuery(document).ready(function($) {
+  var id = 1;
+  myterm = $('#console').terminal(function(command, term) {
+    command = command.replace(/(\r\n|\n|\r)/gm,"").trim();
+    if (command.length > 0) {
+      document.getElementById("permalinkBase").href =
+        '#code='+encodeURIComponent(command);
+      document.getElementById("permalink").style.display = 'block';
+      process(command);
+      for(var p in myterm.history()) {
+        var o = myterm.history()[p];
+//console.log(p); console.log(o);
+      }
+    }
+  }, {
+      greetings: "",
+      name: "j",
+      height: 150,
+      width: 500,
+      prompt: "   ",
+      onBlur: function() {
+          // prevent loosing focus
+          //return false;
+      }
+  });
+
+  Module.ccall('main', null, null, null);
+
+  var code = decodeURIComponent(window.location.hash).substr(1);
+  if (code.substring(0,5)=='code=') {
+    document.getElementById("permalinkBase").href =
+      window.location.href;
+    code = code.substring(5);
+    myterm.exec(code);
+    document.getElementById("permalink").style.display = 'block';
+  } else {
+    document.getElementById("permalink").style.display = 'none';
+  }
+
+    $('#Append').click(function() {
+        $('#Script').val( $('#Script').val() + '\n' + $('#Input').val() );
+    });
+    $('#Run').click(function() {
+        myterm.exec($('#Input').val());
+    });
+
+    $('#RunScript').click(function() {
+        /*
+        var jtnfs = Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])
+        a=HEAP32[31136];
+        noun='SCRIPT';
+        txt=$('#Script').val();
+        var script = jtnfs(a, txt.length, txt);
+        var sym = jtnfs(a, noun.length, noun);
+        var jt_global = HEAP32[a+204520>>2];
+        //var ret = _jtsymbis(a, sym, script);
+        var ret = _jtsymbis(a, Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])(a,'SCRIPT'.length,'SCRIPT'),Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])(a,txt.length,txt), 7643256)
+        console.log(ret);
+        process('(0!:100) SCRIPT');
+        */
+        window.prompt = function(x) { return $('#Script').val() + '\n)\n' };
+        process('SCRIPT =: 0 : 0');
+        process("(0!:100) SCRIPT");
+    });
+    $('#Cls').click(function() {
+        myterm.clear();
+    });
+    $('#Clear').click(function() {
+        $('#Input').val('');
+    });
+
+    $('#Input').keypress(function(e) {
+        if (e.keyCode == 13) {
+            $('#Run').click();
+        }
+    });
+
+    $('#RunAndClear').click(function() {
+        $('#Run').click();
+        $('#Clear').click();
+    });
+    $('.presets').change(function() {
+        var v = $(this).val();
+        if (v != '') {
+            $('#Input').val( $('#Input').val() + v);
+        }
+        $(this).val('');
+        $('#Input').focus();
+    });
+});
+
+$('#Examples').change(function() {
+    var v = $(this).val();
+    if (v != '') {
+        $('#Input').val( $('#Input').val() + v);
+    }
+    $(this).val('');
+    $('#Input').focus();
+    $('#Run').click();
+});
+
+
+var chars=charRange('!','z');
+$.each(chars, function(i,x) {
+    if (x!='"') {
+        $('#Symbols').append('<option value="' + x + '">' + x + '</option>');
+    }
+});
+function charRange(start,stop) {
+    var result=[];
+    for (var idx=start.charCodeAt(0),end=stop.charCodeAt(0); idx <=end; ++idx){
+        result.push(String.fromCharCode(idx));
+    }
+    return result;
+};
+var examples=['loc=. 1 2', "GLO=: 'foo'", '_3 = -3', 'NB. negative vs. negate',
+              "'' NB. Empty vector", "'Hello, World!'",
+              '2 2 $ 1 2 11 22', '1 2 3 # 1 2 3',
+              ', 2 2$99',  "23 ; 'skidoo'",
+              "3 {. 'foot'", '2 }. 1 2 3 4',
+              '+ / 1 10 100', 'i. 10',
+              "'foo' i. 'o'",
+              '2 + 3 30',
+              '3 30 * 2',
+              '1 10 - 5 6',
+              '2 3 5 % 3 4 6',
+              '2 ^ i.17',
+              '2 10 ^. 4 100',
+              '^. 2.71828',
+              '2 3 4 <. 99 1 2',
+              '>. 1.1 0.5 1.9']
+
+$.each(examples, function(i,x) {
+    $('#Examples').append('<option value="' + x + '">' + x + '</option>');
+});
+
+var rank = function(f) { return HEAP32[16+f>>2] }
+var shape = function(f) { return HEAP32[20+f>>2] }
+var ravelPtr = function(f) { return HEAP32[f>>2]; }
+var val = function(f,size,idx) {
+    return HEAP32[(ravelPtr(f) + (idx*size) +f)>>2];
+}
+var typei = function(f) { return HEAP32[12+f>>2] };
+
+var INT=1;
+var LIT=2;
+var ARR=4;
+var BOX=32;
+
+FUNCTION_TABLE[3295] = function(a,f,d) {
+    var x ='';
+    var y = '';
+    
+    if (typei(f) == LIT)
+        x = Pointer_stringify(f+ravelPtr(f),shape(f));
+    if (typei(d) == LIT)
+        y = Pointer_stringify(d+ravelPtr(d),shape(d));
+
+    if (typei(f) == INT)
+        x = val(f,4,0);
+
+    if (typei(d) == INT) {
+        //y = Array.apply(null, Array(shape(d))).map(function(_,i) { return val(d, 4, i) });
+        //y = HEAP32.subarray(d+ravelPtr(d)>>2,d+ravelPtr(d)+shape(d)>>2);
+        y = val(d,4,0);
+    }
+
+    //note: there is strange behavior if y is 1 or 0 array
+    if (typei(d) == ARR) {
+        y = Array.apply(null, Array(shape(d))).map(function(_,i) { return val(d, 4, i) });
+    }
+    console.log(typei(d));
+    
+    if (x=='alert') {
+        alert(y);
+        a = HEAP32[31136];
+        z = _jtga(a,INT,1,0);
+        HEAP32[z+HEAP32[z>>2]>>2] = 1;
+        return z;
+    }
+    if (x=='drawRect') {
+        console.log(y);
+        var canvas = document.getElementById("Canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillRect(y[0],y[1],y[2],y[3])
+        console.log(y);
+    }
+}
+
+
+
+</script>
+    <br><br>
+<span style="font-family:arial;font-size:8pt">Using J examples from <a href="http://www.jsoftware.com/jwiki/DevonMcCormick/MinimalBeginningJ">http://www.jsoftware.com/jwiki/DevonMcCormick/MinimalBeginningJ</span>
+</body>
