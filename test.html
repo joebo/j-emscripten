@@ -1,0 +1,45 @@
+<script type="text/javascript">
+  var myterm = false;
+  var Module = {
+    noInitialRun: true,
+    noExitRuntime: true,
+    preRun: [],
+    postRun: [],
+    print: function(text) { console.log(text) },
+    TOTAL_MEMORY: 102428800
+  };
+</script>
+<script type="text/javascript" src="j-called.js"></script>
+<script type="text/javascript">
+  // wrapper for the process_wrapper C function
+  var process = Module.cwrap('process_wrapper', null, ['string']);
+  Module.ccall('main', null, null, null);
+  Module.run("1+1");
+</script>
+
+<script>
+  /*
+  var xmlhttp = new XMLHttpRequest()
+
+xmlhttp.onreadystatechange=function() {
+  if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+    csv = JSON.parse(xmlhttp.responseText)
+  }
+}
+
+xmlhttp.open('GET', 'https://query.yahooapis.com/v1/public/yql?format=json&q=' + encodeURIComponent('SELECT * FROM csv where url="http://samplecsvs.s3.amazonaws.com/SalesJan2009.csv"'), true)
+xmlhttp.send()
+
+
+var rowKeys = Object.keys(csv.query.results.row[0])
+var t = csv.query.results.row.map(function(x) { return rowKeys.map(function(key) { return x[key]; }).join("\t") }).join("\n")
+
+
+window.prompt = function(x) { return t + "\n)\n" }
+  process("tz=: 0 : 0 ")
+  */
+  function set() { process("a=:'abc'"); }
+</script>
+
+<textarea id="o"></textarea>
+<input type=button onClick="javascript:set()" value="test">

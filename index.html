@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>J interpreter</title>
+    <script src="jquery-1.7.1.min.js"></script>
+    <script src="jquery.mousewheel-min.js"></script>
+    <script src="jquery.terminal-min.js"></script>
+    <style>
+      @font-face {
+        font-family: 'SourceCodePro';
+        src: url('SourceCodePro-Medium.eot');
+        src: url('SourceCodePro-Medium.eot?#iefix') format('embedded-opentype'),
+             url('SourceCodePro-Medium.otf.woff') format('woff'),
+             url('SourceCodePro-Medium.ttf.woff') format('truetype'),
+             url('SourceCodePro-Medium.svg') format('svg');
+      }
+      body {
+        background-color: #fff;
+        color: #242625;
+        font-family: SourceCodePro, monospace;
+        width: 820px;
+        margin: 8px auto 0;
+      }
+      #logo {
+        font-size: 64px;
+        margin-bottom: 3px;
+        position: relative;
+        left: -2px;
+      }
+      #about {
+        font-size: 15px;
+        padding-left: 2px;
+        margin-bottom: 16px;
+      }
+      #console {
+        border-top: 2px solid #242625;
+        border-bottom: 2px solid #242625;
+      }
+
+      #permalink {
+        font-size: small;
+        margin-top: 12px;
+        text-align: right;
+      }
+      #permalink a {
+        text-decoration: none;
+        color: #aaa;
+        border-bottom: 1px dotted #aaa;
+      }
+      #permalink a:hover {
+        color: #242625;
+        border-bottom: 1px dotted #242625;
+      }
+
+    </style>
+    <link href="jquery.terminal.css" rel="stylesheet"/>
+  </head>
+<body>
+
+<script type="text/javascript">
+  var myterm = false;
+  var Module = {
+    noInitialRun: true,
+    noExitRuntime: true,
+    preRun: [],
+    postRun: [],
+    print: (function() {
+      return function(text) {
+        myterm.echo(text,{
+          finalize: function(div) {
+            div.css("color", "#242625");
+          }
+        });
+      };
+    })()
+  };
+</script>
+<script type="text/javascript" src="j.js"></script>
+<script type="text/javascript">
+  // wrapper for the process_wrapper C function
+  var process = Module.cwrap('process_wrapper', null, ['string']);
+</script>
+
+<!-- terminal emulation -->
+<div id="logo">J<small>.js</small></div>
+<div id="about">
+version 0.051<br/>
+compiled to JavaScript by f211</div>
+<div id="console"></div>
+
+<div id="permalink">
+  <a id="permalinkBase" href="#">last command permalink</a>
+</div>
+
+<script>
+jQuery(document).ready(function($) {
+  var id = 1;
+  myterm = $('#console').terminal(function(command, term) {
+    command = command.replace(/(\r\n|\n|\r)/gm,"").trim();
+    if (command.length > 0) {
+      document.getElementById("permalinkBase").href =
+        '#code='+encodeURIComponent(command);
+      document.getElementById("permalink").style.display = 'block';
+      process(command);
+      for(var p in myterm.history()) {
+        var o = myterm.history()[p];
+        console.log(p); console.log(o);
+      }
+    }
+  }, {
+      greetings: "",
+      name: "j",
+      height: 580,
+      prompt: "   ",
+      onBlur: function() {
+          // prevent loosing focus
+          return false;
+      }
+  });
+
+  Module.ccall('main', null, null, null);
+
+  var code = decodeURIComponent(window.location.hash).substr(1);
+  if (code.substring(0,5)=='code=') {
+    document.getElementById("permalinkBase").href =
+      window.location.href;
+    code = code.substring(5);
+    myterm.exec(code);
+    document.getElementById("permalink").style.display = 'block';
+  } else {
+    document.getElementById("permalink").style.display = 'none';
+  }
+});
+
+</script>
+</body>
