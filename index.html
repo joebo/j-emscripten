@@ -82,6 +82,7 @@
 <script type="text/javascript">
   // wrapper for the process_wrapper C function
   var process = Module.cwrap('process_wrapper', null, ['string']);
+  
 </script>
 
 <!-- terminal emulation -->
@@ -152,6 +153,10 @@ using J compiled to JavaScript by f211
 b=: 0 : 0
 abc
 )
+add1=: 3 : 0
+smoutput 1+y
+)
+add1 2
 </textarea>
   <input type="button" value="Run" id="RunScript">
 </div>
@@ -161,7 +166,8 @@ abc
 
 
 <script>
-jQuery(document).ready(function($) {
+  jQuery(document).ready(function($) {
+
   var id = 1;
   myterm = $('#console').terminal(function(command, term) {
     command = command.replace(/(\r\n|\n|\r)/gm,"").trim();
@@ -188,7 +194,8 @@ jQuery(document).ready(function($) {
   });
 
   Module.ccall('main', null, null, null);
-
+  process("smoutput=: 0 0 $ 1!:2&2");
+  
   var code = decodeURIComponent(window.location.hash).substr(1);
   if (code.substring(0,5)=='code=') {
     document.getElementById("permalinkBase").href =
@@ -208,22 +215,19 @@ jQuery(document).ready(function($) {
     });
 
     $('#RunScript').click(function() {
-        /*
-        var jtnfs = Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])
-        a=HEAP32[31136];
-        noun='SCRIPT';
+
+        var jtinpl = Module.cwrap('jtinpl', 'number', ['number', 'number', 'number', 'string'])
+        var a=HEAP32[31136];
+        var noun='input_jfe_';
+
         txt=$('#Script').val();
-        var script = jtnfs(a, txt.length, txt);
-        var sym = jtnfs(a, noun.length, noun);
+
+        var jtnfs = Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])
+        var script = jtinpl(a, 0, txt.length, txt);
         var jt_global = HEAP32[a+204520>>2];
-        //var ret = _jtsymbis(a, sym, script);
-        var ret = _jtsymbis(a, Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])(a,'SCRIPT'.length,'SCRIPT'),Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])(a,txt.length,txt), 7643256)
-        console.log(ret);
-        process('(0!:100) SCRIPT');
-        */
-        window.prompt = function(x) { return $('#Script').val() + '\n)\n' };
-        process('SCRIPT =: 0 : 0');
-        process("(0!:101) SCRIPT");
+        
+        var ret = _jtsymbis(a, jtnfs(a,noun.length,noun),script, jt_global)
+        process('(0!:100) ' + noun);
     });
     $('#Cls').click(function() {
         myterm.clear();
