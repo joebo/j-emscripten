@@ -1,4 +1,3 @@
-
 function ___udivdi3(a, f, d, c) {
     return ___udivmoddi4(a | 0, f | 0, d | 0, c | 0, 0) | 0
 }
@@ -707,7 +706,7 @@ function _jtkeyi(a, f, d, c) {
     }
     l = _jtfrom(a, k, d);
     d = _jtcut(a, HEAP32[c + (HEAP32[c >> 2] + 8) >> 2], HEAP32[31058]);
-    0 == (d | 0) ? f = 0 : (c = FUNCTION_TABLE[HEAP32[d + (HEAP32[d >> 2] + 4) >> 2]](a, i, l, d), 0 == (c | 0) ? f = 0 : (_jttraverse(a, c, 654), k = c + 16, HEAP32[k >> 2] += 1, f = c));
+    0 == (d | 0) ? f = 0 : (c =getFUNCTION_TABLE(HEAP32[d + (HEAP32[d >> 2] + 4) >> 2])(a, i, l, d), 0 == (c | 0) ? f = 0 : (_jttraverse(a, c, 654), k = c + 16, HEAP32[k >> 2] += 1, f = c));
     _jttpop(a, b);
     return a = _jttpush(a, f)
 }
@@ -7119,7 +7118,7 @@ function _jtcolon(a, f, d) {
                 Ye = HEAP32[30858];
                 Hf = HEAP32[31067];
                 jf = _jtcut(a, Ye, Hf);
-                (mf = 0 == (jf | 0)) ? Le = 0: (df = Ve = jf, wf = HEAP32[df >> 2], Jf = Yf = Ve + wf, Sf = Qf = HEAP32[Jf >> 2], Le = Mf = FUNCTION_TABLE[Sf](a, Lf, jf));
+                (mf = 0 == (jf | 0)) ? Le = 0: (df = Ve = jf, wf = HEAP32[df >> 2], Jf = Yf = Ve + wf, Sf = Qf = HEAP32[Jf >> 2], Le = Mf = getFUNCTION_TABLE(Sf)(a, Lf, jf));
                 ee = Ne;
                 oe = ve;
                 rf = ee - oe;
@@ -7128,7 +7127,7 @@ function _jtcolon(a, f, d) {
                 tg = HEAP32[30858];
                 Ze = HEAP32[31067];
                 gf = _jtcut(a, tg, Ze);
-                (ef = 0 == (gf | 0)) ? (Kf = Le, bg = 0) : (Rf = lg = gf, Ug = HEAP32[Rf >> 2], Jg = Vf = lg + Ug, Lg = hg = HEAP32[Jg >> 2], $f = FUNCTION_TABLE[Lg](a,
+                (ef = 0 == (gf | 0)) ? (Kf = Le, bg = 0) : (Rf = lg = gf, Ug = HEAP32[Rf >> 2], Jg = Vf = lg + Ug, Lg = hg = HEAP32[Jg >> 2], $f = getFUNCTION_TABLE(Lg)(a,
                     Pe, gf), Kf = Le, bg = $f)
             } else {
                 ah = Ub + 24;
@@ -7692,7 +7691,7 @@ function _jtcolon(a, f, d) {
                                 bt = it + (Ew << 3);
                                 yr = 113724 + (36 * ws & -1);
                                 Cv = Rt = HEAP32[yr >> 2];
-                                FUNCTION_TABLE[Cv](ur, a, Rv, Ew, it);
+                                getFUNCTION_TABLE(Cv)(ur, a, Rv, Ew, it);
                                 Ht = bt;
                                 qu = h;
                                 ix = HEAP32[qu >> 2];
@@ -8015,7 +8014,7 @@ function _jtconj(a, f, d, c) {
     HEAP32[e >> 2] = b;
     //TEST
     //console.log(c);
-    a = FUNCTION_TABLE[c](a, d, g, b);
+    a = getFUNCTION_TABLE(c)(a, d, g, b);
     HEAP32[e >> 2] = f;
     return a
 }
@@ -9069,7 +9068,7 @@ function _jtcorx1(a, f, d) {
         else {
             m = _jtfolk(a, HEAP32[30967], h, i);
             if (0 == (m | 0)) return 0;
-            e = FUNCTION_TABLE[HEAP32[m + HEAP32[m >> 2] >> 2]](a, f, m);
+            e = getFUNCTION_TABLE(HEAP32[m + HEAP32[m >> 2] >> 2])(a, f, m);
             if (0 == (e | 0)) return 0;
             r = e;
             c = 19
@@ -9361,14 +9360,14 @@ function _jtcut2(a, f, d, c) {
                                 Ya = Qa = c + Ja;
                                 lb = HEAP32[Ya >> 2];
                                 Ca = lb & 256;
-                                if (gb = 0 == (Ca | 0)) return y = Fa = FUNCTION_TABLE[s](a, d, r), STACKTOP = e, y;
+                                if (gb = 0 == (Ca | 0)) return y = Fa = getFUNCTION_TABLE(s)(a, d, r), STACKTOP = e, y;
                                 Za = p + 16;
                                 ib = qb = c + Za;
                                 ub = HEAP32[ib >> 2];
                                 eb = ub + 20;
                                 rb = HEAP32[eb >> 2];
                                 (wb = 0 == (rb | 0)) ? (Ka = a + 4408, ob = nb = Va = HEAP32[Ka >> 2], cb = HEAP32[ob >>
-                                    2], Wa = cb + 36, Cb = yb = nb + Wa, Pb = HEAP32[Cb >> 2], zb = Pb + 20, Zb = HEAP32[zb >> 2], Hb = ac = Pb, Ib = HEAP32[Hb >> 2], Qb = ac + Ib, _jtjsigstr(a, 9, Zb, Qb), y = 0) : (Ob = Rb = ub, Bb = HEAP32[Ob >> 2], dc = xb = Rb + Bb, Mb = oc = tb = HEAP32[dc >> 2], Tb = HEAP32[Mb >> 2], Nb = Ra = oc + Tb, Ab = sb = HEAP32[Nb >> 2], y = Eb = FUNCTION_TABLE[Ab](a, d, tb));
+                                                                                                                   2], Wa = cb + 36, Cb = yb = nb + Wa, Pb = HEAP32[Cb >> 2], zb = Pb + 20, Zb = HEAP32[zb >> 2], Hb = ac = Pb, Ib = HEAP32[Hb >> 2], Qb = ac + Ib, _jtjsigstr(a, 9, Zb, Qb), y = 0) : (Ob = Rb = ub, Bb = HEAP32[Ob >> 2], dc = xb = Rb + Bb, Mb = oc = tb = HEAP32[dc >> 2], Tb = HEAP32[Mb >> 2], Nb = Ra = oc + Tb, Ab = sb = HEAP32[Nb >> 2], y = Eb = getFUNCTION_TABLE(Ab)(a, d, tb));
                                 STACKTOP = e;
                                 return y
                             }
@@ -10370,7 +10369,7 @@ function _jtcut2(a, f, d, c) {
                                                         dz = HEAP32[cz >> 2];
                                                         Oz = _jtiden(a, dz);
                                                         (HC = 0 == (Oz | 0)) ? ez = 0: (pw = SA = Oz, rA = HEAP32[pw >>
-                                                            2], Bw = hv = SA + rA, fz = iv = HEAP32[Bw >> 2], ez = Pz = FUNCTION_TABLE[fz](a, iy, Oz));
+                                                                                                                  2], Bw = hv = SA + rA, fz = iv = HEAP32[Bw >> 2], ez = Pz = getFUNCTION_TABLE(fz)(a, iy, Oz));
                                                         ax = HEAP8[iu];
                                                         iD = 0 == ax << 24 >> 24;
                                                         if (!iD) {
@@ -10403,7 +10402,7 @@ function _jtcut2(a, f, d, c) {
                                                                 cy = Dw;
                                                                 break
                                                             } else cy = Dw
-                                                } else hC = OA - Iu, iC = Math_imul(hC, aj) | 0, yz = Bx + iC, nB = Math_imul($x, li) | 0, FUNCTION_TABLE[nw](a, 1, nB, $x, Yx, yz), cy = Ky;
+                                                } else hC = OA - Iu, iC = Math_imul(hC, aj) | 0, yz = Bx + iC, nB = Math_imul($x, li) | 0, FUNCTION_TABLE(nw)(a, 1, nB, $x, Yx, yz), cy = Ky;
                                             while (0);
                                             CB = Yx + Mt;
                                             QD = Iu - Yu;
@@ -10421,7 +10420,7 @@ function _jtcut2(a, f, d, c) {
                                         DB = HEAP32[30860];
                                         my = _jtamp(a, tz, DB);
                                         if (iF = 0 == (my | 0)) b = 316;
-                                        else if (tA = pB = my, TA = HEAP32[tA >> 2], Sy = Gx = pB + TA, Ju = UA = HEAP32[Sy >> 2], KC = FUNCTION_TABLE[Ju](a, jz, my), LC = 0 == (KC | 0)) b = 316;
+                                        else if (tA = pB = my, TA = HEAP32[tA >> 2], Sy = Gx = pB + TA, Ju = UA = HEAP32[Sy >> 2], KC = getFUNCTION_TABLE(Ju)(a, jz, my), LC = 0 == (KC | 0)) b = 316;
                                         else return y = KC, STACKTOP = e, y
                                     }
                                 while (0);
@@ -10548,7 +10547,7 @@ function _jtcut2(a, f, d, c) {
                     a: do
                         if (329 == b) {
                             if (PG = 0 == (Uf | 0)) return fI = HEAP32[30648],
-                                QG = _jtreitem(a, fI, d), (eG = 0 == (Tj | 0)) ? nz = gI = FUNCTION_TABLE[s](a, QG, r) : (xD = HEAP32[bl >> 2], (xJ = 0 == (xD | 0)) ? nz = 0 : (LI = KI = xD, AH = HEAP32[LI >> 2], oF = fG = KI + AH, pF = BH = HEAP32[oF >> 2], nz = yJ = FUNCTION_TABLE[pF](a, QG, xD))), RG = a + 204545, HEAP8[RG] = 0, CA = a + 4400, HEAP32[CA >> 2] = 0, GE = HEAP32[30648], QC = 0 != (nz | 0), zJ = HEAP32[31086], qC = QC ? nz : zJ, ($D = 0 == (qC | 0)) ? oy = 0 : (MI = qC + 24, rC = HEAP32[MI >> 2], bB = _jtga(a, 4, rC, 1, 0), (sB = 0 == (bB | 0)) ? oy = 0 : (NI = gG = qC + 28, sC = qF = bB, LB = HEAP32[sC >> 2], rF = qF + LB, CH = rC << 2, _memcpy(rF, NI, CH) | 0, oy = bB)), yD = _jtover(a, GE, oy),
+                            QG = _jtreitem(a, fI, d), (eG = 0 == (Tj | 0)) ? nz = gI = getFUNCTION_TABLE(s)(a, QG, r) : (xD = HEAP32[bl >> 2], (xJ = 0 == (xD | 0)) ? nz = 0 : (LI = KI = xD, AH = HEAP32[LI >> 2], oF = fG = KI + AH, pF = BH = HEAP32[oF >> 2], nz = yJ = getFUNCTION_TABLE(pF)(a, QG, xD))), RG = a + 204545, HEAP8[RG] = 0, CA = a + 4400, HEAP32[CA >> 2] = 0, GE = HEAP32[30648], QC = 0 != (nz | 0), zJ = HEAP32[31086], qC = QC ? nz : zJ, ($D = 0 == (qC | 0)) ? oy = 0 : (MI = qC + 24, rC = HEAP32[MI >> 2], bB = _jtga(a, 4, rC, 1, 0), (sB = 0 == (bB | 0)) ? oy = 0 : (NI = gG = qC + 28, sC = qF = bB, LB = HEAP32[sC >> 2], rF = qF + LB, CH = rC << 2, _memcpy(rF, NI, CH) | 0, oy = bB)), yD = _jtover(a, GE, oy),
                                 y = hG = _jtiota(a, yD), STACKTOP = e, y;
                             sF = _jtga(a, 32, Uf, 1, 0);
                             if (cB = 0 == (sF | 0)) return y = 0, STACKTOP = e, y;
@@ -10604,7 +10603,7 @@ function _jtcut2(a, f, d, c) {
                                             for (eE = 0;;)
                                                 if (mG = XG + (eE << 2), xF = HEAP32[mG >> 2], aq ? (KE = xF, yF = vC = eA = KE + gl) : yF = xF, LE = Ay + (eE << 2), HEAP32[LE >> 2] = yF, UC = eE + 1, RI = (UC | 0) < (SC | 0)) eE = UC;
                                                 else break;
-                                        eB = FUNCTION_TABLE[s](a, fx, r);
+                                        eB = getFUNCTION_TABLE(s)(a, fx, r);
                                         if (OK = 0 == (eB | 0)) {
                                             y = 0;
                                             b = 425;
@@ -10722,7 +10721,7 @@ function _jtcut2(a, f, d, c) {
                                         2];
                                     nE = hK = tG + ZC;
                                     LH = JA = HEAP32[nE >> 2];
-                                    YB = FUNCTION_TABLE[LH](a, GF, fH);
+                                    YB = getFUNCTION_TABLE(LH)(a, GF, fH);
                                     if (hx = 0 == (YB | 0)) {
                                         y = 0;
                                         b = 425;
@@ -10824,7 +10823,7 @@ function _jtcut2(a, f, d, c) {
                                     XK = $I + WK;
                                     OF = Math_imul(lK, aj) | 0;
                                     _memcpy(XK, eD, OF) | 0;
-                                    pE = FUNCTION_TABLE[s](a, TH, r);
+                                    pE = getFUNCTION_TABLE(s)(a, TH, r);
                                     if (PQ = 0 == (pE | 0)) {
                                         y = 0;
                                         b = 425;
@@ -10942,7 +10941,7 @@ function _jtcut2(a, f, d, c) {
                                     tE = HEAP32[sE >> 2];
                                     yB = EC = bF + tE;
                                     vS = uE = HEAP32[yB >> 2];
-                                    kJ = FUNCTION_TABLE[vS](a, hL, pH);
+                                    kJ = getFUNCTION_TABLE(vS)(a, hL, pH);
                                     if ($M = 0 == (kJ | 0)) {
                                         y = 0;
                                         b = 425;
@@ -13266,7 +13265,7 @@ function _jtevery(a, f, d, c) {
             p >> 2] + p;
         p = i + (HEAP32[i + m >> 2] + m);
         for (m = 0;;) {
-            i = FUNCTION_TABLE[q](a, HEAP32[p >> 2], d);
+            i = getFUNCTION_TABLE(q)(a, HEAP32[p >> 2], d);
             HEAP32[k >> 2] = i;
             if (0 == (i | 0)) {
                 h = 0;
@@ -13327,7 +13326,7 @@ function _jtevery(a, f, d, c) {
         } else {
             n = g;
             for (c = 0;;) {
-                l = FUNCTION_TABLE[f](a, HEAP32[j + (c << 2) >> 2] + k, d);
+                l = getFUNCTION_TABLE(f)(a, HEAP32[j + (c << 2) >> 2] + k, d);
                 HEAP32[n >> 2] = l;
                 if (0 == (l | 0)) {
                     h = 0;
@@ -13473,7 +13472,7 @@ function _jtfixa(a, f, d) {
                         L = J + 4;
                         I = m + L;
                         H = HEAP32[I >> 2];
-                        return b = K = FUNCTION_TABLE[H](a, v, A, m)
+                        return b = K = getFUNCTION_TABLE(H)(a, v, A, m)
                     }
                     N = _jthead(a, l);
                     S = _jttail(a, l);
@@ -13482,13 +13481,13 @@ function _jtfixa(a, f, d) {
                     Q = V + 4;
                     P = m + Q;
                     M = HEAP32[P >> 2];
-                    R = FUNCTION_TABLE[M](a, N, S, m);
+                    R = getFUNCTION_TABLE(M)(a, N, S, m);
                     if (O = 0 == (R | 0)) return b = 0;
                     aa = HEAP32[R >> 2];
                     Z = aa + 4;
                     $ = R + Z;
                     ba = HEAP32[$ >> 2];
-                    return b = ka = FUNCTION_TABLE[ba](a, v, A, R)
+                    return b = ka = FUNCTION_TABLE(ba)(a, v, A, R)
                 }
             }
             if (42 == c) {
@@ -13496,7 +13495,7 @@ function _jtfixa(a, f, d) {
                 ha = HEAP32[m >> 2];
                 da = m + ha;
                 ga = HEAP32[da >> 2];
-                return b = U = FUNCTION_TABLE[ga](a, v, m)
+                return b = U = getFUNCTION_TABLE(ga)(a, v, m)
             }
             ca = _jthead(a, l);
             X = _jttail(a, l);
@@ -13505,12 +13504,12 @@ function _jtfixa(a, f, d) {
             fa = ja + 4;
             ia = m + fa;
             ra = HEAP32[ia >> 2];
-            sa = FUNCTION_TABLE[ra](a, ca, X, m);
+            sa = getFUNCTION_TABLE(ra)(a, ca, X, m);
             if (ta = 0 == (sa | 0)) return b = 0;
             wa = HEAP32[sa >> 2];
             za = sa + wa;
             Ba = HEAP32[za >> 2];
-            return b = ua = FUNCTION_TABLE[Ba](a, v, sa);
+        return b = ua = getFUNCTION_TABLE(Ba)(a, v, sa);
         case 52:
             return ya = HEAP32[31072], xa = _jtfixa(a, ya, j), oa = HEAP32[31072], pa = _jtfixa(a, oa, i), la = _jthook(a, xa, pa);
         case -76:
@@ -13527,7 +13526,7 @@ function _jtfixa(a, f, d) {
             Ma = Ga + 4;
             Ia = m + Ma;
             db = HEAP32[Ia >> 2];
-            return b = W = FUNCTION_TABLE[db](a, Da, Ea, m);
+        return b = W = getFUNCTION_TABLE(db)(a, Da, Ea, m);
         case 58:
             Xa = HEAP32[31058];
             Ta = _jtfixa(a, Xa, j);
@@ -13538,7 +13537,7 @@ function _jtfixa(a, f, d) {
             Na = ab + 4;
             $a = m + Na;
             Ua = HEAP32[$a >> 2];
-            return b = Pa = FUNCTION_TABLE[Ua](a, Ta, mb, m);
+        return b = Pa = getFUNCTION_TABLE(Ua)(a, Ta, mb, m);
         case 38:
         case -73:
         case -74:
@@ -13551,7 +13550,7 @@ function _jtfixa(a, f, d) {
             lb = Ya + 4;
             Ca = m + lb;
             gb = HEAP32[Ca >> 2];
-            return b = Fa = FUNCTION_TABLE[gb](a, bb, Ja, m);
+        return b = Fa = getFUNCTION_TABLE(gb)(a, bb, Ja, m);
         case 51:
             Za =
                 _jtfixa(a, q, j);
@@ -13705,7 +13704,7 @@ function _jtfixa(a, f, d) {
             Nd = HEAP32[m >> 2];
             be = m + Nd;
             zd = HEAP32[be >> 2];
-            return b = we = FUNCTION_TABLE[zd](a, Kd, m);
+        return b = we = getFUNCTION_TABLE(zd)(a, Kd, m);
         case -92:
         case 92:
         case -90:
@@ -13716,7 +13715,7 @@ function _jtfixa(a, f, d) {
             Ud = HEAP32[m >> 2];
             Cf = m + Ud;
             td = HEAP32[Cf >> 2];
-            return b = Te = FUNCTION_TABLE[td](a, rd, m);
+        return b = Te = getFUNCTION_TABLE(td)(a, rd, m);
         case 47:
             pe = HEAP32[31071];
             Pd = _jtfixa(a, pe, j);
@@ -13724,7 +13723,7 @@ function _jtfixa(a, f, d) {
             Sd = HEAP32[m >> 2];
             $e = m + Sd;
             qe = HEAP32[$e >> 2];
-            return b = Ce = FUNCTION_TABLE[qe](a, Pd, m);
+        return b = Ce = getFUNCTION_TABLE(qe)(a, Pd, m);
         case 50:
             return cf = HEAP32[31071], sf = _jtfixa(a, cf, j), Ue = HEAP32[31058], kf = _jtfixa(a, Ue, i), Re = _jthook(a, sf, kf);
         case 64:
@@ -13738,7 +13737,7 @@ function _jtfixa(a, f, d) {
             Yd = We + 4;
             Ne = m + Yd;
             Se = HEAP32[Ne >> 2];
-            return b = Ee = FUNCTION_TABLE[Se](a, De, Ge, m);
+        return b = Ee = getFUNCTION_TABLE(Se)(a, De, Ge, m);
         default:
             if (r) {
                 Ld = _jtfixa(a, q, j);
@@ -13751,10 +13750,10 @@ function _jtfixa(a, f, d) {
                 Ae = HEAP32[m >> 2];
                 te = m + Ae;
                 ie = HEAP32[te >> 2];
-                return b = ff = FUNCTION_TABLE[ie](a, Qd, m)
+                return b = ff = getFUNCTION_TABLE(ie)(a, Qd, m)
             }
             ue = _jtfixa(a, q, i);
-            return 0 == (ue | 0) ? b = 0 : 0 == (Qd | 0) ? b = d : 0 == (m | 0) ? b = 0 : b = FUNCTION_TABLE[HEAP32[m + (HEAP32[m >> 2] + 4) >> 2]](a, Qd, ue, m)
+        return 0 == (ue | 0) ? b = 0 : 0 == (Qd | 0) ? b = d : 0 == (m | 0) ? b = 0 : b = getFUNCTION_TABLE(HEAP32[m + (HEAP32[m >> 2] + 4) >> 2])(a, Qd, ue, m)
     }
 }
 function _jtfolk(a, f, d, c) {
@@ -14896,7 +14895,7 @@ function _jtrepeat(a, f, d) {
                     l = HEAP32[31058];
                     y = HEAP32[30648];
                     C = _jtva2(a, y, _jtravel(a, z), -125);
-                    0 == (C | 0) ? F = 0 : (y = _jtslash(a, HEAP32[30936]), F = 0 == (y | 0) ? 0 : FUNCTION_TABLE[HEAP32[y + HEAP32[y >> 2] >> 2]](a, C, y));
+                    0 == (C | 0) ? F = 0 : (y = _jtslash(a, HEAP32[30936]), F = 0 == (y | 0) ? 0 : getFUNCTION_TABLE(HEAP32[y + HEAP32[y >> 2] >> 2])(a, C, y));
                     if (0 == _jtequ(a, l, F) << 24 >> 24) {
                         C = HEAP32[a + 4408 >> 2];
                         y = HEAP32[C + (HEAP32[C >> 2] + 12) >> 2];
@@ -14913,7 +14912,7 @@ function _jtrepeat(a, f, d) {
                         B = D = 0;
                         break
                     }
-                    C = FUNCTION_TABLE[HEAP32[y + HEAP32[y >> 2] >> 2]](a, z, y);
+                    C = getFUNCTION_TABLE(HEAP32[y + HEAP32[y >> 2] >> 2])(a, z, y);
                     if (0 ==
                         (C | 0)) {
                         B = D = 0;
@@ -15512,7 +15511,7 @@ function _jtrepeat(a, f, d) {
             nb = v + (HEAP32[rb + (v + 12) >> 2] + rb);
             u = _jtslash(a, HEAP32[30841]);
             if (0 == (u | 0)) return j = 0, STACKTOP = b, j;
-            qb = FUNCTION_TABLE[HEAP32[u + HEAP32[u >> 2] >> 2]](a, f, u);
+            qb = getFUNCTION_TABLE(HEAP32[u + HEAP32[u >> 2] >> 2])(a, f, u);
             if (0 ==
                 (qb | 0)) return j = 0, STACKTOP = b, j;
             u = _jtga(a, HEAP32[w >> 2], 1, HEAP32[s >> 2], d + 28);
@@ -18690,8 +18689,8 @@ function _jtfx(a, f) {
             } else i = 0;
             h = b;
             d = HEAP32[b >> 2];
-            d = j ? FUNCTION_TABLE[HEAP32[h +
-                d >> 2]](a, k, b) : FUNCTION_TABLE[HEAP32[d + (h + 4) >> 2]](a, k, i, b);
+            d = j ? getFUNCTION_TABLE(HEAP32[h +
+                                             d >> 2])(a, k, b) : getFUNCTION_TABLE(HEAP32[d + (h + 4) >> 2])(a, k, i, b);
             STACKTOP = c;
             return d
         }
@@ -23545,7 +23544,7 @@ function _jtirs2(a, f, d, c, b, e, g) {
     0 > (e | 0) ? (e = p + e, e = 0 > (e | 0) ? 0 : e) : e = (p | 0) > (e | 0) ? e : p;
     HEAP32[j + 4 >> 2] = e;
     j = p - e;
-    if ((k | 0) == (n | 0) & (p | 0) == (e | 0)) return a = FUNCTION_TABLE[g](a, f, d, c), STACKTOP = h, a;
+    if ((k | 0) == (n | 0) & (p | 0) == (e | 0)) return a = getFUNCTION_TABLE(g)(a, f, d, c), STACKTOP = h, a;
     e = (m | 0) < (j | 0) ? m : j;
     a: do
         if (0 != (e | 0)) {
@@ -23565,7 +23564,7 @@ function _jtirs2(a, f, d, c, b, e, g) {
         }
     while (0);
     HEAP32[i >> 2] = b;
-    b = FUNCTION_TABLE[g](a, f, d, c);
+    b = getFUNCTION_TABLE(g)(a, f, d, c);
     HEAP32[i >> 2] = l;
     STACKTOP = h;
     return b
@@ -23612,7 +23611,7 @@ function _jtisf(a, f, d) {
     var c;
     c = _jtope(a, f);
     0 == (c | 0) ? f = 0 : (f = _jtstdnm(a, c), 0 == (f | 0) && (HEAP32[a + 1168 >> 2] = _jtnfs(a, HEAP32[c + 20 >> 2], c + HEAP32[c >> 2]), f = HEAP32[a + 4408 >> 2], c = HEAP32[f + (HEAP32[f >> 2] + 16) >> 2], _jtjsigstr(a, 4, HEAP32[c + 20 >> 2], c + HEAP32[c >> 2]), f = 0));
-    c = FUNCTION_TABLE[HEAP32[a + 205332 >> 2]](a, d, 0);
+    c = getFUNCTION_TABLE(HEAP32[a + 205332 >> 2])(a, d, 0);
     return _jtsymbis(a, f, c, HEAP32[a + 205676 >> 2])
 }
 function _jtjgets(a, f) {
@@ -23626,7 +23625,7 @@ function _jtjgets(a, f) {
     if (0 == (f | 0)) {
         _jtshowerr(a);
         if (0 == (HEAP32[a + 204976 >> 2] | 0))
-            if (c = HEAP32[a + 205624 >> 2], 0 != (c | 0)) g = FUNCTION_TABLE[c](a, e);
+            if (c = HEAP32[a + 205624 >> 2], 0 != (c | 0)) g = getFUNCTION_TABLE(c)(a, e);
             else return HEAP8[HEAP32[d >> 2]] = 0, c = HEAP32[a + 4408 >> 2], h = HEAP32[c + (HEAP32[c >> 2] + 8) >> 2], _jtjsigstr(a, 2, HEAP32[h + 20 >> 2], h + HEAP32[h >> 2]), 0;
         else h = 0 != (HEAP8[e] | 0) ? 120112 : 119032, c = a + 1040, HEAP8[c] = 1, j = _strlen(h), i = _jtga(a, 2, j, 1, 0), 0 == (i | 0) ? l = 0 : (_memcpy(i + HEAP32[i >>
             2], h, j) | 0, l = i), i = _jtexec1(a, l), HEAP8[c] = 0, 0 != (i | 0) ? (j = c = i, i = c + HEAP32[j >> 2], _jtwri(a, 3, 161016, _strlen(i), i), g = c + HEAP32[j >> 2]) : (j = HEAP32[d >> 2], 156616 == (j | 0) && _exit(2), _munmap(j, 1), HEAP32[d >> 2] = 156616, j = a + 12, _close(HEAP32[j >> 2]), HEAP32[j >> 2] = 0, j = a + 16, _unlink(j), HEAP8[j] = 0, _exit(2));
@@ -23768,7 +23767,7 @@ function _jtjpr(a, f) {
                         Wa = HEAP32[cb >>
                             2];
                         yb = 0 == (Wa | 0);
-                        yb || (Cb = HEAP32[ab >> 2], zb = (Pb = 0 == (Cb | 0)) ? 1 : Cb, ac = Zb = nb, Hb = HEAP32[ac >> 2], Ib = Zb + Hb, Qb = HEAP32[Na >> 2], (Rb = 0 == (Qb | 0)) ? (Ob = HEAP32[$a >> 2], Bb = 0 == (Ob | 0), Bb || (xb = Ob, FUNCTION_TABLE[xb](a, zb, Ib))) : (_memcpy(c, 113016, 24) | 0, dc = zb + 48, tb = dc & 255, HEAP8[c] = tb, HEAP32[Ua >> 2] = Ib, oc = HEAP8[Pa], Mb = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, Tb = _strlen(c), Ra = _jtga(a, 2, Tb, 1, 0), (Nb = 0 == (Ra | 0)) ? sb = 0 : (Eb = Ab = Ra, Lb = HEAP32[Eb >> 2], vb = Ab + Lb, _memcpy(vb, c, Tb) | 0, sb = Ra), _jtexec1(a, sb), HEAP8[La] = 0, HEAP8[Pa] = oc, HEAP32[bb >>
+                    yb || (Cb = HEAP32[ab >> 2], zb = (Pb = 0 == (Cb | 0)) ? 1 : Cb, ac = Zb = nb, Hb = HEAP32[ac >> 2], Ib = Zb + Hb, Qb = HEAP32[Na >> 2], (Rb = 0 == (Qb | 0)) ? (Ob = HEAP32[$a >> 2], Bb = 0 == (Ob | 0), Bb || (xb = Ob, getFUNCTION_TABLE(xb)(a, zb, Ib))) : (_memcpy(c, 113016, 24) | 0, dc = zb + 48, tb = dc & 255, HEAP8[c] = tb, HEAP32[Ua >> 2] = Ib, oc = HEAP8[Pa], Mb = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, Tb = _strlen(c), Ra = _jtga(a, 2, Tb, 1, 0), (Nb = 0 == (Ra | 0)) ? sb = 0 : (Eb = Ab = Ra, Lb = HEAP32[Eb >> 2], vb = Ab + Lb, _memcpy(vb, c, Tb) | 0, sb = Ra), _jtexec1(a, sb), HEAP8[La] = 0, HEAP8[Pa] = oc, HEAP32[bb >>
                             2] = Mb));
                         wc = HEAP32[31088];
                         Ec = 0 == (wc | 0);
@@ -23799,7 +23798,7 @@ function _jtjpr(a, f) {
                         Ub = nc + 20;
                         $c = HEAP32[Ub >> 2];
                         ad = 0 == ($c | 0);
-                        ad || (qc = HEAP32[ab >> 2], rc = (Uc = 0 == (qc | 0)) ? 1 : qc, Jb = kb = nc, $b = HEAP32[Jb >> 2], na = kb + $b, Vb = HEAP32[Na >> 2], (kc = 0 == (Vb | 0)) ? (va = HEAP32[$a >> 2], Wc = 0 == (va | 0), Wc || (Yb = va, FUNCTION_TABLE[Yb](a, rc, na))) : (_memcpy(c, 113016, 24) | 0, fc = rc + 48, Kb = fc & 255, HEAP8[c] = Kb, HEAP32[Ua >> 2] = na, Gb = HEAP8[Pa], gd = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, mc = _strlen(c), Gc = _jtga(a, 2, mc, 1, 0), (dd = 0 == (Gc | 0)) ? kd = 0 : (Vc = Fd = Gc, Hd = HEAP32[Vc >> 2], bd = Fd + Hd, _memcpy(bd, c, mc) | 0, kd = Gc), _jtexec1(a,
+                    ad || (qc = HEAP32[ab >> 2], rc = (Uc = 0 == (qc | 0)) ? 1 : qc, Jb = kb = nc, $b = HEAP32[Jb >> 2], na = kb + $b, Vb = HEAP32[Na >> 2], (kc = 0 == (Vb | 0)) ? (va = HEAP32[$a >> 2], Wc = 0 == (va | 0), Wc || (Yb = va, getFUNCTION_TABLE(Yb)(a, rc, na))) : (_memcpy(c, 113016, 24) | 0, fc = rc + 48, Kb = fc & 255, HEAP8[c] = Kb, HEAP32[Ua >> 2] = na, Gb = HEAP8[Pa], gd = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, mc = _strlen(c), Gc = _jtga(a, 2, mc, 1, 0), (dd = 0 == (Gc | 0)) ? kd = 0 : (Vc = Fd = Gc, Hd = HEAP32[Vc >> 2], bd = Fd + Hd, _memcpy(bd, c, mc) | 0, kd = Gc), _jtexec1(a,
                             kd), HEAP8[La] = 0, HEAP8[Pa] = Gb, HEAP32[bb >> 2] = gd));
                         cc = HEAP32[31088];
                         Ic = 0 == (cc | 0);
@@ -23829,7 +23828,7 @@ function _jtjpr(a, f) {
                         Oc = HEAP32[Jc >> 2];
                         Pc = 0 == (Oc | 0);
                         Pc || (ke = HEAP32[ab >> 2], pd = (Ed = 0 == (ke | 0)) ? 1 : ke,
-                            Cc = id = ld, Qc = HEAP32[Cc >> 2], Zc = id + Qc, vd = HEAP32[Na >> 2], ($d = 0 == (vd | 0)) ? (je = HEAP32[$a >> 2], Kc = 0 == (je | 0), Kc || (Bd = je, FUNCTION_TABLE[Bd](a, pd, Zc))) : (_memcpy(c, 113016, 24) | 0, od = pd + 48, Vd = od & 255, HEAP8[c] = Vd, HEAP32[Ua >> 2] = Zc, Zd = HEAP8[Pa], Jd = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, Md = _strlen(c), Cd = _jtga(a, 2, Md, 1, 0), (fe = 0 == (Cd | 0)) ? Xd = 0 : (Od = qd = Cd, Mc = HEAP32[Od >> 2], Dd = qd + Mc, _memcpy(Dd, c, Md) | 0, Xd = Cd), _jtexec1(a, Xd), HEAP8[La] = 0, HEAP8[Pa] = Zd, HEAP32[bb >> 2] = Jd));
+                               Cc = id = ld, Qc = HEAP32[Cc >> 2], Zc = id + Qc, vd = HEAP32[Na >> 2], ($d = 0 == (vd | 0)) ? (je = HEAP32[$a >> 2], Kc = 0 == (je | 0), Kc || (Bd = je, getFUNCTION_TABLE(Bd)(a, pd, Zc))) : (_memcpy(c, 113016, 24) | 0, od = pd + 48, Vd = od & 255, HEAP8[c] = Vd, HEAP32[Ua >> 2] = Zc, Zd = HEAP8[Pa], Jd = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, Md = _strlen(c), Cd = _jtga(a, 2, Md, 1, 0), (fe = 0 == (Cd | 0)) ? Xd = 0 : (Od = qd = Cd, Mc = HEAP32[Od >> 2], Dd = qd + Mc, _memcpy(Dd, c, Md) | 0, Xd = Cd), _jtexec1(a, Xd), HEAP8[La] = 0, HEAP8[Pa] = Zd, HEAP32[bb >> 2] = Jd));
                         Td = HEAP32[31088];
                         le = 0 == (Td | 0);
                         le || (_jttraverse(a,
@@ -23866,7 +23865,7 @@ function _jtjpr(a, f) {
                         we = be + 20;
                         Lc = HEAP32[we >> 2];
                         rd = 0 == (Lc | 0);
-                        rd || (se = HEAP32[ab >> 2], Cf = (Ud = 0 == (se | 0)) ? 1 : se, Te = td = be, pe = HEAP32[Te >> 2], Pd = td + pe, Me = HEAP32[Na >> 2], (Sd = 0 == (Me | 0)) ? ($e = HEAP32[$a >> 2], qe = 0 == ($e | 0), qe || (Ce = $e, FUNCTION_TABLE[Ce](a, Cf, Pd))) : (_memcpy(c, 113016, 24) | 0, cf = Cf + 48, sf = cf & 255, HEAP8[c] = sf, HEAP32[Ua >> 2] = Pd, Ue = HEAP8[Pa], kf = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >>
+                    rd || (se = HEAP32[ab >> 2], Cf = (Ud = 0 == (se | 0)) ? 1 : se, Te = td = be, pe = HEAP32[Te >> 2], Pd = td + pe, Me = HEAP32[Na >> 2], (Sd = 0 == (Me | 0)) ? ($e = HEAP32[$a >> 2], qe = 0 == ($e | 0), qe || (Ce = $e, getFUNCTION_TABLE(Ce)(a, Cf, Pd))) : (_memcpy(c, 113016, 24) | 0, cf = Cf + 48, sf = cf & 255, HEAP8[c] = sf, HEAP32[Ua >> 2] = Pd, Ue = HEAP8[Pa], kf = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >>
                             2] = 0, HEAP8[La] = 1, Re = _strlen(c), ce = _jtga(a, 2, Re, 1, 0), (De = 0 == (ce | 0)) ? Ge = 0 : (We = He = ce, Yd = HEAP32[We >> 2], Ne = He + Yd, _memcpy(Ne, c, Re) | 0, Ge = ce), _jtexec1(a, Ge), HEAP8[La] = 0, HEAP8[Pa] = Ue, HEAP32[bb >> 2] = kf));
                         Se = HEAP32[31088];
                         Ee = 0 == (Se | 0);
@@ -23904,7 +23903,7 @@ function _jtjpr(a, f) {
                         Pf = HEAP32[Bf >> 2];
                         Ye = 0 == (Pf | 0);
                         Ye || (Hf = HEAP32[ab >> 2], mf = (jf = 0 == (Hf | 0)) ? 1 : Hf, Ve = Le = pf, df = HEAP32[Ve >>
-                            2], wf = Le + df, Yf = HEAP32[Na >> 2], (Jf = 0 == (Yf | 0)) ? (Qf = HEAP32[$a >> 2], Sf = 0 == (Qf | 0), Sf || (Mf = Qf, FUNCTION_TABLE[Mf](a, mf, wf))) : (_memcpy(c, 113016, 24) | 0, ee = mf + 48, oe = ee & 255, HEAP8[c] = oe, HEAP32[Ua >> 2] = wf, rf = HEAP8[Pa], Ff = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, xf = _strlen(c), Pe = _jtga(a, 2, xf, 1, 0), (qf = 0 == (Pe | 0)) ? yf = 0 : (Zf = Nf = Pe, tg = HEAP32[Zf >> 2], Ze = Nf + tg, _memcpy(Ze, c, xf) | 0, yf = Pe), _jtexec1(a, yf), HEAP8[La] = 0, HEAP8[Pa] = rf, HEAP32[bb >> 2] = Ff));
+                                                                                                                   2], wf = Le + df, Yf = HEAP32[Na >> 2], (Jf = 0 == (Yf | 0)) ? (Qf = HEAP32[$a >> 2], Sf = 0 == (Qf | 0), Sf || (Mf = Qf, getFUNCTION_TABLE(Mf)(a, mf, wf))) : (_memcpy(c, 113016, 24) | 0, ee = mf + 48, oe = ee & 255, HEAP8[c] = oe, HEAP32[Ua >> 2] = wf, rf = HEAP8[Pa], Ff = HEAP32[bb >> 2], HEAP8[Pa] = 0, HEAP32[bb >> 2] = 0, HEAP8[La] = 1, xf = _strlen(c), Pe = _jtga(a, 2, xf, 1, 0), (qf = 0 == (Pe | 0)) ? yf = 0 : (Zf = Nf = Pe, tg = HEAP32[Zf >> 2], Ze = Nf + tg, _memcpy(Ze, c, xf) | 0, yf = Pe), _jtexec1(a, yf), HEAP8[La] = 0, HEAP8[Pa] = rf, HEAP32[bb >> 2] = Ff));
                         gf = HEAP32[31088];
                         ef = 0 == (gf | 0);
                         ef || (_jttraverse(a, gf, 654), Kf = gf + 16, bg =
@@ -24444,7 +24443,7 @@ function _jtline(a, f, d, c, b) {
                             else
                         if (HEAP32[h >> 2] = r, x = _jtparse(a, _jtenqueue(a, _jtwordil(a, q), q)), HEAP32[h >> 2] -= 1, 55 == (HEAP8[s] | 0) ? (HEAP8[s] = 0, HEAP32[n >> 2] = 0, v = HEAP32[31088]) : v = x, 0 != (v | 0) && 0 == (HEAP8[p] | 0) && (_jtjpr(a, v), 0 == (HEAP8[p] | 0) && (x = v + 12, 0 != (HEAP32[x >> 2] & 805567999 | 0)))) {
                             v = _jtva2(a, HEAP32[31058], v, 61);
-                            0 == (HEAP32[x >> 2] & 64512 | 0) ? (y = v, e = 42) : (x = _jtslash(a, HEAP32[30936]), x = _jtatop(a, x, HEAP32[30842]), 0 != (x | 0) && (y = FUNCTION_TABLE[HEAP32[x + HEAP32[x >> 2] >> 2]](a, v, x), e = 42));
+                            0 == (HEAP32[x >> 2] & 64512 | 0) ? (y = v, e = 42) : (x = _jtslash(a, HEAP32[30936]), x = _jtatop(a, x, HEAP32[30842]), 0 != (x | 0) && (y = getFUNCTION_TABLE(HEAP32[x + HEAP32[x >> 2] >> 2])(a, v, x), e = 42));
                             do
                                 if (42 == e && (e = 0, 0 != (y | 0) && 0 == (_memchr(y + HEAP32[y >> 2], 0, HEAP32[y + 20 >> 2]) | 0))) break c;
                             while (0);
@@ -24919,8 +24918,8 @@ function _jtnvv1(a, f, d) {
     b = HEAP32[b + (c + 16) >> 2];
     h = 0 == (b | 0) ? 0 : HEAP32[b + HEAP32[b >> 2] >> 2];
     c = HEAP32[a + 205752 >> 2] + HEAP32[a + 205692 >> 2];
-    b = FUNCTION_TABLE[h](a, f, b);
-    b = FUNCTION_TABLE[g](a, d, b, e);
+    b = getFUNCTION_TABLE(h)(a, f, b);
+    b = getFUNCTION_TABLE(g)(a, d, b, e);
     if (0 == (b | 0)) return _jttpop(a, c), a = _jttpush(a, b);
     _jttraverse(a, b, 654);
     e = b + 16;
@@ -26286,7 +26285,7 @@ function _jtparsea(a, f) {
                 HEAP32[HEAP32[m >> 2] + 28 >> 2] = t;
                 t = HEAP32[113720 + (36 * x & -1) >> 2];
                 HEAP8[f] = 7 == (x | 0) | 0;
-                y = FUNCTION_TABLE[t](a, w, u, h);
+                y = getFUNCTION_TABLE(t)(a, w, u, h);
                 HEAP32[h + (u << 2) >> 2] = y;
                 if (1 < x - 7 >>> 0) {
                     t = u;
@@ -26744,8 +26743,8 @@ function _jtpowv1(a, f, d) {
     b = HEAP32[b + (d + 24) >> 2];
     if (0 == (f | 0)) return 0;
     if ((b | 0) < (HEAP32[f + 24 >> 2] | 0)) return a = _jtrank1ex(a, f, d, b, 3150);
-    b = _jtpowop(a, e, FUNCTION_TABLE[h](a, f, g));
-    0 == (b | 0) ? f = 0 : (g = FUNCTION_TABLE[HEAP32[b + HEAP32[b >> 2] >> 2]](a, f, b), 0 == (g | 0) ? f = 0 : (_jttraverse(a, g, 654), h = g + 16, HEAP32[h >> 2] += 1, f = g));
+    b = _jtpowop(a, e, getFUNCTION_TABLE(h)(a, f, g));
+    0 == (b | 0) ? f = 0 : (g = getFUNCTION_TABLE(HEAP32[b + HEAP32[b >> 2] >> 2])(a, f, b), 0 == (g | 0) ? f = 0 : (_jttraverse(a, g, 654), h = g + 16, HEAP32[h >> 2] += 1, f = g));
     _jttpop(a, c);
     return a = _jttpush(a, f)
 }
@@ -28062,7 +28061,7 @@ function _jtrank2ex(a, f, d, c, b, e, g) {
             0 > (e | 0) ? (y = v + e, z = 0 > (y | 0) ? 0 : y) : z = (v | 0) > (e | 0) ? e : v;
             y = v - z;
             A = 0 == (q & 32 | 0) ? 0 : 0 != (HEAP32[d + 4 >> 2] & 14 | 0) | 0;
-            if ((r | 0) == (u | 0) & (v | 0) == (z | 0)) return k = FUNCTION_TABLE[g](a, f, d, c);
+            if ((r | 0) == (u | 0) & (v | 0) == (z | 0)) return k = getFUNCTION_TABLE(g)(a, f, d, c);
             v = f + 28 + (t << 2);
             do
                 if (0 < (u | 0)) {
@@ -28195,11 +28194,11 @@ function _jtrank2ex(a, f, d, c, b, e, g) {
                     } else oa = Z, pa = I;
             while (0);
             if (Z = 0 != (fa | 0)) {
-                ba = FUNCTION_TABLE[g](a, za, oa, c);
+                ba = getFUNCTION_TABLE(g)(a, za, oa, c);
                 if (0 == (ba | 0)) return k = 0;
                 Da = qa = ba
             } else ba = a + 1176, $ = HEAP32[ba >>
-                2], HEAP32[ba >> 2] = 0, P = FUNCTION_TABLE[g](a, za, oa, c), HEAP32[ba >> 2] = $, 0 != (HEAP8[r] | 0) && (P = HEAP32[30648], HEAP8[r] = 0, HEAP32[a + 4400 >> 2] = 0), qa = P, Da = 0;
+                                             2], HEAP32[ba >> 2] = 0, P = getFUNCTION_TABLE(g)(a, za, oa, c), HEAP32[ba >> 2] = $, 0 != (HEAP8[r] | 0) && (P = HEAP32[30648], HEAP8[r] = 0, HEAP32[a + 4400 >> 2] = 0), qa = P, Da = 0;
             P = HEAP32[qa + 12 >> 2];
             $ = HEAP32[qa + 24 >> 2];
             ba = qa + 28;
@@ -28331,7 +28330,7 @@ function _jtrank2ex(a, f, d, c, b, e, g) {
                                         }
                                     } else Ka = bb, Va = Y, nb = ca;
                                 while (0);
-                                Qa = FUNCTION_TABLE[U](a, Ca, Ka, c);
+                                Qa = getFUNCTION_TABLE(U)(a, Ca, Ka, c);
                                 if (0 == (Qa | 0)) {
                                     k = 0;
                                     h = 187;
@@ -28541,7 +28540,7 @@ function _jtrank2ex(a, f, d, c, b, e, g) {
                                     }
                                 } else Qb = bb, Rb = V, Ob = ka;
                             while (0);
-                            Qa = FUNCTION_TABLE[N](a, Pb, Qb, c);
+                            Qa = getFUNCTION_TABLE(N)(a, Pb, Qb, c);
                             if (0 == (Qa | 0)) {
                                 k = 0;
                                 h = 187;
@@ -32625,7 +32624,7 @@ function _jtthv(a, f, d, c) {
         v = w = c;
         i = l;
         for (f = 0;;) {
-            FUNCTION_TABLE[e](a, g, i);
+            getFUNCTION_TABLE(e)(a, g, i);
             b = _strlen(g);
             u = b + (v + 1);
             if (D = (h | 0) < (u - w | 0)) {
@@ -33268,41 +33267,41 @@ function _jttpush(a, f) {
 function _jttraverse(a, f, d) {
     var c, b, e, g, h, j;
     if (0 != (f | 0))
-        if (c = HEAP32[f + 12 >> 2], 1024 == (c | 0) | 4096 == (c | 0) | 8192 == (c | 0) | 16384 == (c | 0) | 2048 == (c | 0) | 32768 == (c | 0)) b = f, c = HEAP32[f >> 2], e = d, FUNCTION_TABLE[e](a, b + (HEAP32[b + c >> 2] + c), 0), FUNCTION_TABLE[e](a, b + (HEAP32[c + (b + 4) >> 2] + c), 0), FUNCTION_TABLE[e](a, b + (HEAP32[c + (b + 8) >> 2] + c), 0), FUNCTION_TABLE[e](a, b + (HEAP32[c + (b + 12) >> 2] + c), 0);
+        if (c = HEAP32[f + 12 >> 2], 1024 == (c | 0) | 4096 == (c | 0) | 8192 == (c | 0) | 16384 == (c | 0) | 2048 == (c | 0) | 32768 == (c | 0)) b = f, c = HEAP32[f >> 2], e = d, getFUNCTION_TABLE(e)(a, b + (HEAP32[b + c >> 2] + c), 0), getFUNCTION_TABLE(e)(a, b + (HEAP32[c + (b + 4) >> 2] + c), 0), getFUNCTION_TABLE(e)(a, b + (HEAP32[c + (b + 8) >> 2] + c), 0), getFUNCTION_TABLE(e)(a, b + (HEAP32[c + (b + 12) >> 2] + c), 0);
         else if (128 == (c | 0)) {
         if (c = HEAP32[f + 20 >> 2], b = c << 1, !(0 >= (c | 0))) {
             c = d;
             e = 0;
             for (g = f + HEAP32[f >> 2];;)
-                if (FUNCTION_TABLE[c](a, HEAP32[g >> 2], 0), h = e + 1, (h |
+                if (getFUNCTION_TABLE(c)(a, HEAP32[g >> 2], 0), h = e + 1, (h |
                         0) < (b | 0)) e = h, g += 4;
                 else break
         }
     } else if (8388608 == (c | 0)) {
-        if (e = g = f, b = HEAP32[e >> 2], c = a + 205688, h = d, FUNCTION_TABLE[h](a, HEAP32[HEAP32[c >> 2] + (24 * HEAP32[g + b >> 2] & -1) + 4 >> 2], 0), FUNCTION_TABLE[h](a, HEAP32[HEAP32[c >> 2] + (24 * HEAP32[g + HEAP32[e >> 2] >> 2] & -1) >> 2], 0), e = HEAP32[f + 20 >> 2] - 1, !(0 >= (e | 0))) {
+        if (e = g = f, b = HEAP32[e >> 2], c = a + 205688, h = d, getFUNCTION_TABLE(h)(a, HEAP32[HEAP32[c >> 2] + (24 * HEAP32[g + b >> 2] & -1) + 4 >> 2], 0), getFUNCTION_TABLE(h)(a, HEAP32[HEAP32[c >> 2] + (24 * HEAP32[g + HEAP32[e >> 2] >> 2] & -1) >> 2], 0), e = HEAP32[f + 20 >> 2] - 1, !(0 >= (e | 0))) {
             j = b + (g + 4);
             for (g = 0;;)
-                if (b = HEAP32[j >> 2], 0 != (b | 0) && (f = HEAP32[c >> 2], FUNCTION_TABLE[h](a, HEAP32[f + (24 * b & -1) >> 2], 0), FUNCTION_TABLE[h](a, HEAP32[f + (24 * b & -1) + 4 >> 2], 0)), b = g + 1, (b | 0) < (e | 0)) j += 4, g = b;
+                if (b = HEAP32[j >> 2], 0 != (b | 0) && (f = HEAP32[c >> 2], getFUNCTION_TABLE(h)(a, HEAP32[f + (24 * b & -1) >> 2], 0), getFUNCTION_TABLE(h)(a, HEAP32[f + (24 * b & -1) + 4 >> 2], 0)), b = g + 1, (b | 0) < (e | 0)) j += 4, g = b;
                 else break
         }
     } else if (262144 == (c | 0) | 524288 ==
-        (c | 0) | 1048576 == (c | 0)) g = f, j = HEAP32[f >> 2], e = d, FUNCTION_TABLE[e](a, HEAP32[j + (g + 8) >> 2], 0), FUNCTION_TABLE[e](a, HEAP32[j + (g + 12) >> 2], 0), FUNCTION_TABLE[e](a, HEAP32[j + (g + 16) >> 2], 0);
+               (c | 0) | 1048576 == (c | 0)) g = f, j = HEAP32[f >> 2], e = d, getFUNCTION_TABLE(e)(a, HEAP32[j + (g + 8) >> 2], 0), getFUNCTION_TABLE(e)(a, HEAP32[j + (g + 12) >> 2], 0), getFUNCTION_TABLE(e)(a, HEAP32[j + (g + 16) >> 2], 0);
     else if (64 == (c | 0) | 32 == (c | 0)) {
         if (g = HEAP32[f + 4 >> 2], 0 == (g & 6 | 0) && (j = f + HEAP32[f >> 2], g = f & -(0 == (c & 32 | 0) ? 0 : 0 != (g & 14 | 0) | 0), b = HEAP32[f + 20 >> 2], !(0 >= (b | 0))))
             if (e = d, 0 == (g | 0))
                 for (h = 0;;)
-                    if (FUNCTION_TABLE[e](a, HEAP32[j + (h << 2) >> 2], 0), c = h + 1, (c | 0) < (b | 0)) h = c;
+                    if (getFUNCTION_TABLE(e)(a, HEAP32[j + (h << 2) >> 2], 0), c = h + 1, (c | 0) < (b | 0)) h = c;
                     else break;
         else
             for (h = 0;;)
-                if (FUNCTION_TABLE[e](a, HEAP32[j + (h << 2) >> 2] + g, 0), c = h + 1, (c | 0) < (b | 0)) h =
+                if (getFUNCTION_TABLE(e)(a, HEAP32[j + (h << 2) >> 2] + g, 0), c = h + 1, (c | 0) < (b | 0)) h =
                     c;
                 else break
     } else if (268435456 == (c | 0) && (c = HEAP32[f + 20 >> 2], !(0 >= (c | 0)))) {
         h = d;
         d = 0;
         for (b = f + HEAP32[f >> 2];;)
-            if (FUNCTION_TABLE[h](a, HEAP32[b + 8 >> 2], 0), f = d + 1, (f | 0) < (c | 0)) d = f, b += 12;
+            if (getFUNCTION_TABLE(h)(a, HEAP32[b + 8 >> 2], 0), f = d + 1, (f | 0) < (c | 0)) d = f, b += 12;
             else break
     }
 }
@@ -33366,12 +33365,20 @@ function _jtunder(a, f, d) {
     return 0
 }
 
-function getFUNCTION_TABLE(i) {
-    console.log(i);
+function ogetFUNCTION_TABLE(i) {
     return FUNCTION_TABLE[i];
 }
     
+function dgetFUNCTION_TABLE(i) {
+    console.log(i);
+    f= FUNCTION_TABLE[i];
+    if (f == 0) {
+        console.log('missing ' + i);
+    }
+    return f;
+}
 
+var getFUNCTION_TABLE = ogetFUNCTION_TABLE;
 
 function _jtunquote(a, f, d, c) {
     var b, e, g, h, j, i, l, k, m, n, p, q, r, s, t, u, w, v, x, y, z, A, D, B, G, C, F, E, J, L, I, H, K, N, S, T, V, Q, P, M, R, O, aa, Z, $, ba, ka, ea, ha;
@@ -33456,7 +33463,7 @@ function _jtunquote(a, f, d, c) {
                                     if (0 == _jtdbstop(a, F, 0) << 24 >> 24) {
                                         T = 0 == (L | 0);
                                         T || (_jttraverse(a, L, 654), V = L + 16, HEAP32[V >> 2] += 1);
-                                        0 == (S | 0) ? T || (V = HEAP32[H >> 2], Q = HEAP32[L + HEAP32[L >> 2] >> 2], HEAP32[H >> 2] = L, P = FUNCTION_TABLE[Q](a, N, L), M = V, b = 45) : T || (V = HEAP32[H >> 2], Q = HEAP32[L + (HEAP32[L >> 2] + 4) >> 2], HEAP32[H >> 2] = L, P = FUNCTION_TABLE[Q](a, S, N,
+                                        0 == (S | 0) ? T || (V = HEAP32[H >> 2], Q = HEAP32[L + HEAP32[L >> 2] >> 2], HEAP32[H >> 2] = L, P = getFUNCTION_TABLE(Q)(a, N, L), M = V, b = 45) : T || (V = HEAP32[H >> 2], Q = HEAP32[L + (HEAP32[L >> 2] + 4) >> 2], HEAP32[H >> 2] = L, P = getFUNCTION_TABLE(Q)(a, S, N,
                                             L), M = V, b = 45);
                                         if (45 == b && (b = 0, HEAP32[H >> 2] = M, _jttraverse(a, L, 1910), T = L + 16, V = HEAP32[T >> 2] - 1, HEAP32[T >> 2] = V, 0 == (V | 0) && (T = L - 32 + 24, Q = HEAP16[T + 4 >> 1], R = Q << 16 >> 16, O = HEAP32[124360 + (R << 2) >> 2], HEAP32[J >> 2] -= O, 10 < Q << 16 >> 16 ? _free(T) : (Q = a + 204588 + (R << 2), HEAP32[T >> 2] = HEAP32[Q >> 2], HEAP32[Q >> 2] = T, T = a + 204712 + (R << 2), HEAP32[T >> 2] += O)), 0 != (P | 0))) {
                                             aa = P;
@@ -33713,7 +33720,7 @@ function _jtva1(a, f, d) {
         xb = HEAP32[Bb >> 2];
         tb = dc = Ob + xb;
         oc = ia;
-        FUNCTION_TABLE[oc](a, t, Rb, tb);
+        getFUNCTION_TABLE(oc)(a, t, Rb, tb);
         Mb = HEAP8[l];
         if (Tb = 0 == Mb << 24 >> 24) {
             c = 94;
@@ -33777,7 +33784,7 @@ function _jtva1(a, f, d) {
             2];
         cc = Vc + bd;
         Ic = ia;
-        FUNCTION_TABLE[Ic](a, 1, Fd, cc);
+        getFUNCTION_TABLE(Ic)(a, 1, Fd, cc);
         if (Ub) {
             fd = HEAP32[n >> 2];
             HEAP32[n >> 2] = 0;
@@ -33804,7 +33811,7 @@ function _jtva1(a, f, d) {
         Kc = HEAP32[sc >> 2];
         Bd = Kc + Xb;
         od = ic + Bd;
-        FUNCTION_TABLE[Ic](a, ke, je, od);
+        getFUNCTION_TABLE(Ic)(a, ke, je, od);
         Vd = HEAP8[l];
         Zd = 0 == Vd << 24 >> 24;
         a: do
@@ -34348,7 +34355,7 @@ function _jtva2(a, f, d, c) {
                             f = A;
                             G = l;
                             for (S = 0;;)
-                                if (FUNCTION_TABLE[K](a, ua, Y, ca, f, G, D), i = S + 1, (i | 0) < (U | 0)) f += R, G += Z, S = i;
+                                if (getFUNCTION_TABLE(K)(a, ua, Y, ca, f, G, D), i = S + 1, (i | 0) < (U | 0)) f += R, G += Z, S = i;
                                 else break;
                             S = B + 1;
                             if ((S | 0) < (X | 0)) A +=
@@ -34367,7 +34374,7 @@ function _jtva2(a, f, d, c) {
                         G = A;
                         f = ua;
                         for (i = 0;;)
-                            if (FUNCTION_TABLE[l](a, B, Y, ca, G, K, f), ya = i + 1, (ya | 0) < (U | 0)) G += R, f += $, i = ya;
+                            if (getFUNCTION_TABLE(l)(a, B, Y, ca, G, K, f), ya = i + 1, (ya | 0) < (U | 0)) G += R, f += $, i = ya;
                             else break;
                         i = Ba + 1;
                         if ((i | 0) < (X | 0)) A += ia, ua = S, K += Z, Ba = i;
@@ -37954,9 +37961,9 @@ function _on1(a, f, d) {
     if (0 == (f | 0)) return 0;
     if ((b | 0) < (HEAP32[f + 24 >> 2] | 0)) return a = _jtrank1ex(a, f, d, b, 2046);
     //console.log('j: ' + j);
-    b = FUNCTION_TABLE[j](a, f, h);
+    b = getFUNCTION_TABLE(j)(a, f, h);
     //console.log('g: ' + g);
-    h = FUNCTION_TABLE[g](a, b, e);
+    h = getFUNCTION_TABLE(g)(a, b, e);
     0 != (h | 0) && (_jttraverse(a, h, 654), e = h + 16, HEAP32[e >> 2] += 1);
     _jttpop(a, c);
     return a = _jttpush(a, h)
@@ -38570,7 +38577,7 @@ function _tcv(a, f, d) {
     c = d;
     b = HEAP32[d >> 2];
     d = HEAP32[b + (c + 8) >> 2];
-    return 0 == (d | 0) ? 0 : a = FUNCTION_TABLE[HEAP32[d + (HEAP32[d >> 2] + 4) >> 2]](a, f, HEAP32[b + (c + 12) >> 2], d)
+    return 0 == (d | 0) ? 0 : a = getFUNCTION_TABLE(HEAP32[d + (HEAP32[d >> 2] + 4) >> 2])(a, f, HEAP32[b + (c + 12) >> 2], d)
 }
 function allocate(a, f, d, c) {
     var b, e;
@@ -38683,10 +38690,577 @@ function run(a) {
 
 
 function _process_wrapper(a) {
-    debugger;
     _jdo(HEAP32[31136], a)
 }
 
+function _jttymes(a, f, d) {
+    return _jtva2(a, f, d, 42)
+}
+
+function _jtdivide(a, f, d) {
+    return _jtva2(a, f, d, 37)
+}
+
+function _divII(a, f, d, c, b, e, g) {
+    var h, j, i, l, k, m, n;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (a = HEAP32[j >> 2], b = HEAP32[g >> 2], l = 0 == (a | b | 0) ? 0 : (a | 0) / (b | 0), HEAPF64[i >> 3] = l, b = h + 1, (b | 0) < (d | 0)) h = b, g += 4, j += 4, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (l = b;;) {
+                b = j + 4;
+                a = HEAP32[j >> 2];
+                if (f) {
+                    i = a | 0;
+                    e = h + (c << 2);
+                    j = 0;
+                    for (k = l;;)
+                        if (m = HEAP32[h >> 2], m = 0 == (m | a | 0) ? 0 : (m | 0) / i, HEAPF64[k >> 3] = m, m = j + 1, (m | 0) < (c | 0)) h += 4, j = m, k += 8;
+                        else break;
+                    n = e;
+                    a = l + (c << 3)
+                } else n = h, a = l;
+                k = g + 1;
+                if ((k | 0) < (d | 0)) j = b, g =
+                    k, h = n, l = a;
+                else break
+            }
+        }
+    } else if (i) {
+        i = 0 < (c | 0);
+        a = 0;
+        l = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 4;
+            n = HEAP32[g >> 2];
+            if (i) {
+                h = n | 0;
+                g = l + (c << 2);
+                j = 0;
+                m = l;
+                for (f = e;;)
+                    if (k = HEAP32[m >> 2], l = 0 == (n | k | 0) ? 0 : h / (k | 0), HEAPF64[f >> 3] = l, k = j + 1, (k | 0) < (c | 0)) j = k, m += 4, f += 8;
+                    else break;
+                l = g;
+                k = e + (c << 3)
+            } else k = e;
+            f = a + 1;
+            if ((f | 0) < (d | 0)) a = f, g = b, e = k;
+            else break
+        }
+    }
+}
+
+function _tymesID(a, f, d, c, b, e, g) {
+    var h, j, i, l, k, m, n, p;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (a = HEAP32[j >> 2], l = 0 == (a | 0) ? 0 : (a | 0) * HEAPF64[g >> 3], HEAPF64[i >> 3] = l, a = h + 1, (a | 0) < (d | 0)) h = a, g += 8, j += 4, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (l = b;;) {
+                a = j + 8;
+                b = HEAPF64[j >> 3];
+                if (f) {
+                    i = h + (c << 2);
+                    k = 0;
+                    for (m = l;;)
+                        if (n = HEAP32[h >> 2], n = 0 == (n | 0) ? 0 : b * (n | 0), HEAPF64[m >> 3] = n, n = k + 1, (n | 0) < (c | 0)) h += 4, k = n, m += 8;
+                        else break;
+                    p = i;
+                    k = l + (c << 3)
+                } else p = h, k = l;
+                m = g + 1;
+                if ((m | 0) < (d | 0)) j = a, g = m, h = p, l = k;
+                else break
+            }
+        }
+    } else if (i) {
+        i =
+            0 < (c | 0);
+        k = 0;
+        l = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 4;
+            p = HEAP32[g >> 2];
+            if (i) {
+                h = 0 == (p | 0);
+                g = p | 0;
+                p = l + (c << 3);
+                j = 0;
+                n = l;
+                for (f = e;;)
+                    if (l = h ? 0 : g * HEAPF64[n >> 3], HEAPF64[f >> 3] = l, m = j + 1, (m | 0) < (c | 0)) j = m, n += 8, f += 8;
+                    else break;
+                l = p;
+                a = e + (c << 3)
+            } else a = e;
+            f = k + 1;
+            if ((f | 0) < (d | 0)) k = f, g = b, e = a;
+            else break
+        }
+    }
+}
+
+function _minusID(a, f, d, c, b, e, g) {
+    var h, j, i, l, k;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (HEAPF64[i >> 3] = (HEAP32[j >> 2] | 0) - HEAPF64[g >> 3], a = h + 1, (a | 0) < (d | 0)) h = a, g += 8, j += 4, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (a = b;;) {
+                b = j + 8;
+                i = HEAPF64[j >> 3];
+                if (f) {
+                    l = a + (c << 3);
+                    k = h;
+                    j = 0;
+                    for (e = a;;)
+                        if (HEAPF64[e >> 3] = (HEAP32[k >> 2] | 0) - i, a = j + 1, (a | 0) < (c | 0)) k += 4, j = a, e += 8;
+                        else break;
+                    k = h + (c << 2)
+                } else k = h, l = a;
+                e = g + 1;
+                if ((e | 0) < (d | 0)) j = b, g = e, h = k, a = l;
+                else break
+            }
+        }
+    } else if (i) {
+        i = 0 < (c | 0);
+        l = 0;
+        a = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 4;
+            if (i) {
+                k = HEAP32[g >> 2] | 0;
+                h = e + (c << 3);
+                g = 0;
+                j = a;
+                for (f = e;;)
+                    if (HEAPF64[f >> 3] = k - HEAPF64[j >> 3], e = g + 1, (e | 0) < (c | 0)) g = e, j += 8, f += 8;
+                    else break;
+                a += c << 3
+            } else h = e;
+            f = l + 1;
+            if ((f | 0) < (d | 0)) l = f, g = b, e = h;
+            else break
+        }
+    }
+}
+
+function _plusID(a, f, d, c, b, e, g) {
+    var h, j, i, l, k;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (HEAPF64[i >> 3] = (HEAP32[j >> 2] | 0) + HEAPF64[g >> 3], a = h + 1, (a | 0) < (d | 0)) h = a, g += 8, j += 4, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (a = b;;) {
+                b = j + 8;
+                i = HEAPF64[j >> 3];
+                if (f) {
+                    l = a + (c << 3);
+                    k = h;
+                    j = 0;
+                    for (e = a;;)
+                        if (HEAPF64[e >> 3] = i + (HEAP32[k >> 2] | 0), a = j + 1, (a | 0) < (c | 0)) k += 4, j = a, e += 8;
+                        else break;
+                    k = h + (c << 2)
+                } else k = h, l = a;
+                e = g + 1;
+                if ((e | 0) < (d | 0)) j = b, g = e, h = k, a = l;
+                else break
+            }
+        }
+    } else if (i) {
+        i = 0 < (c | 0);
+        l = 0;
+        a = g;
+        g = e;
+        for (e =
+            b;;) {
+            b = g + 4;
+            if (i) {
+                k = HEAP32[g >> 2] | 0;
+                h = e + (c << 3);
+                g = 0;
+                j = a;
+                for (f = e;;)
+                    if (HEAPF64[f >> 3] = k + HEAPF64[j >> 3], e = g + 1, (e | 0) < (c | 0)) g = e, j += 8, f += 8;
+                    else break;
+                a += c << 3
+            } else h = e;
+            f = l + 1;
+            if ((f | 0) < (d | 0)) l = f, g = b, e = h;
+            else break
+        }
+    }
+}
+
+function _powII(a, f, d, c, b, e, g) {
+    var h, j, i, l, k, m, n, p, q, r, s, t, u, w;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = g;
+            i = e;
+            for (l = b;;) {
+                a = HEAP32[i >> 2] | 0;
+                k = HEAP32[j >> 2];
+                0 > (k | 0) ? (e = 1 / a, n = (m = -2147483648 == (k | 0)) ? e : 1, p = m ? 2147483647 : -k, q = e) : (n = 1, p = k, q = a);
+                if (0 == (p | 0)) r = n;
+                else {
+                    a = q;
+                    k = p;
+                    for (e = n;;)
+                        if (b = 0 == (k & 1 | 0) ? e : e * a, m = k >> 1, 0 == (m | 0)) {
+                            r = b;
+                            break
+                        } else a *= a, k = m, e = b
+                }
+                HEAPF64[l >> 3] = r;
+                e = h + 1;
+                if ((e | 0) < (d | 0)) h = e, j += 4, i += 4, l += 8;
+                else break
+            }
+        }
+    } else if (l = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (l) {
+            f = 0 < (c | 0);
+            i = g;
+            j = 0;
+            h = e;
+            for (r = b;;) {
+                b = i + 4;
+                n = HEAP32[i >> 2];
+                if (f) {
+                    p = 0 >
+                        (n | 0);
+                    e = (q = -2147483648 == (n | 0)) ? 2147483647 : -n;
+                    k = h + (c << 2);
+                    a = h;
+                    m = 0;
+                    for (l = r;;) {
+                        h = HEAP32[a >> 2] | 0;
+                        p ? (i = 1 / h, s = q ? i : 1, t = e, u = i) : (s = 1, t = n, u = h);
+                        if (0 == (t | 0)) w = s;
+                        else {
+                            h = u;
+                            i = t;
+                            for (g = s;;)
+                                if (g = 0 == (i & 1 | 0) ? g : g * h, s = i >> 1, 0 == (s | 0)) {
+                                    w = g;
+                                    break
+                                } else h *= h, i = s
+                        }
+                        HEAPF64[l >> 3] = w;
+                        g = m + 1;
+                        if ((g | 0) < (c | 0)) a += 4, m = g, l += 8;
+                        else break
+                    }
+                    m = k;
+                    a = r + (c << 3)
+                } else m = h, a = r;
+                l = j + 1;
+                if ((l | 0) < (d | 0)) i = b, j = l, h = m, r = a;
+                else break
+            }
+        }
+    } else if (l) {
+        l = 0 < (c | 0);
+        a = 0;
+        r = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 4;
+            if (l) {
+                m = HEAP32[g >> 2] | 0;
+                h = 1 / m;
+                j = r + (c << 2);
+                i = 0;
+                w = r;
+                for (g = e;;) {
+                    s = HEAP32[w >> 2];
+                    0 > (s |
+                        0) ? (f = (t = -2147483648 == (s | 0)) ? h : 1, r = t ? 2147483647 : -s, s = h) : (f = 1, r = s, s = m);
+                    if (0 == (r | 0)) k = f;
+                    else {
+                        t = r;
+                        for (u = f;;)
+                            if (r = 0 == (t & 1 | 0) ? u : u * s, f = t >> 1, 0 == (f | 0)) {
+                                k = r;
+                                break
+                            } else s *= s, t = f, u = r
+                    }
+                    HEAPF64[g >> 3] = k;
+                    u = i + 1;
+                    if ((u | 0) < (c | 0)) i = u, w += 4, g += 8;
+                    else break
+                }
+                w = e + (c << 3)
+            } else j = r, w = e;
+            g = a + 1;
+            if ((g | 0) < (d | 0)) a = g, r = j, g = b, e = w;
+            else break
+        }
+    }
+}
+
+function _jtexpn2(a, f, d) {
+    return _jtva2(a, f, d, 94)
+ }
+
+function _logI(a, f, d, c) {
+    var b, e, g;
+    b = 0;
+    if (0 < (f | 0)) {
+        e = 0;
+        for (g = d;;) {
+            d = HEAP32[c >> 2];
+            if (-1 >= (d | 0)) break;
+            HEAPF64[g >> 3] = Math_log(d | 0);
+            d = e + 1;
+            if ((d | 0) < (f | 0)) c += 4, e = d, g += 8;
+            else {
+                b = 5;
+                break
+            }
+        }
+        5 != b && (HEAP8[a + 204545] = 51)
+    }
+}
+
+function _divDD(a, f, d, c, b, e, g) {
+    var h, j, i, l, k, m, n;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (a = HEAPF64[j >> 3], b = HEAPF64[g >> 3], l = 0 != a | 0 != b ? a / b : 0, HEAPF64[i >> 3] = l, b = h + 1, (b | 0) < (d | 0)) h = b, g += 8, j += 8, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (l = b;;) {
+                b = j + 8;
+                a = HEAPF64[j >> 3];
+                if (f) {
+                    i = 0 != a;
+                    e = h + (c << 3);
+                    j = 0;
+                    for (k = l;;)
+                        if (m = HEAPF64[h >> 3], m = 0 != m | i ? m / a : 0, HEAPF64[k >> 3] = m, m = j + 1, (m | 0) < (c | 0)) h += 8, j = m, k += 8;
+                        else break;
+                    n = e;
+                    a = l + (c << 3)
+                } else n = h, a = l;
+                k = g + 1;
+                if ((k | 0) < (d | 0)) j = b, g = k, h = n, l = a;
+                else break
+            }
+        }
+    } else if (i) {
+        i =
+            0 < (c | 0);
+        a = 0;
+        l = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 8;
+            n = HEAPF64[g >> 3];
+            if (i) {
+                h = 0 != n;
+                g = l + (c << 3);
+                j = 0;
+                m = l;
+                for (f = e;;)
+                    if (k = HEAPF64[m >> 3], l = h | 0 != k ? n / k : 0, HEAPF64[f >> 3] = l, k = j + 1, (k | 0) < (c | 0)) j = k, m += 8, f += 8;
+                    else break;
+                l = g;
+                k = e + (c << 3)
+            } else k = e;
+            f = a + 1;
+            if ((f | 0) < (d | 0)) a = f, g = b, e = k;
+            else break
+        }
+    }
+}
+
+function _jtminimum(a, f, d) {
+    return _jtva2(a, f, d, -126)
+}
+
+function _minII(a, f, d, c, b, e, g) {
+    var h, j, i, l, k, m, n;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (a = HEAP32[j >> 2], l = HEAP32[g >> 2], HEAP32[i >> 2] = (a | 0) < (l | 0) ? a : l, l = h + 1, (l | 0) < (d | 0)) h = l, g += 4, j += 4, i += 4;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (l = b;;) {
+                a = j + 4;
+                b = HEAP32[j >> 2];
+                if (f) {
+                    i = h + (c << 2);
+                    k = 0;
+                    for (m = l;;)
+                        if (e = HEAP32[h >> 2], HEAP32[m >> 2] = (e | 0) < (b | 0) ? e : b, e = k + 1, (e | 0) < (c | 0)) h += 4, k = e, m += 4;
+                        else break;
+                    n = i;
+                    k = l + (c << 2)
+                } else n = h, k = l;
+                m = g + 1;
+                if ((m | 0) < (d | 0)) j = a, g = m, h = n, l = k;
+                else break
+            }
+        }
+    } else if (i) {
+        i =
+            0 < (c | 0);
+        k = 0;
+        l = g;
+        g = e;
+        for (e = b;;) {
+            b = g + 4;
+            n = HEAP32[g >> 2];
+            if (i) {
+                h = l + (c << 2);
+                g = 0;
+                j = l;
+                for (f = e;;)
+                    if (m = HEAP32[j >> 2], HEAP32[f >> 2] = (n | 0) < (m | 0) ? n : m, m = g + 1, (m | 0) < (c | 0)) g = m, j += 4, f += 4;
+                    else break;
+                l = h;
+                a = e + (c << 2)
+            } else a = e;
+            f = k + 1;
+            if ((f | 0) < (d | 0)) k = f, g = b, e = a;
+            else break
+        }
+    }
+}
+
+function _jtceil1(a, f) {
+    return _jtva1(a, f, -124)
+}
+
+function _ceilDI(a, f, d, c) {
+    var b, e, g, h, j, i, l, k;
+    b = 0;
+    if (!(0 >= (f | 0))) {
+        e = a + 1152;
+        g = HEAPF64[14142];
+        h = 0;
+        j = c;
+        for (c = d;;) {
+            d = HEAPF64[j >> 3]; - 4E35 > d | 4E35 < d ? i = d : (i = Math_floor(d + 0.5), l = i < d, i == d | l ^ 1 ? d = 0 : (k = 0 < i, k ^ 0 < d ? d = 1 : (k ? i > d ? (l = i, d = i - d) : (l = d, d -= i) : l ? (l = -0 - i, d -= i) : (l = -0 - d, d = i - d), d = d > l * HEAPF64[e >> 3] ? 1 : l == g & 1)), i += d);
+            d = i & -1;
+            HEAP32[c >> 2] = d;
+            if (i != (d | 0)) break;
+            d = h + 1;
+            if ((d | 0) < (f | 0)) h = d, j += 8, c += 4;
+            else {
+                b = 19;
+                break
+            }
+        }
+        19 != b && (HEAP8[a + 204545] = 50)
+    }
+}
+
+
+function _jtlogar2(a, f, d) {
+    var c, b, e, g, h, j;
+    c = STACKTOP;
+    STACKTOP = STACKTOP + 16 | 0;
+    b = c + 8;
+    if (0 == (f | 0) | 0 == (d | 0)) return STACKTOP = c, 0;
+    e = a + 205764;
+    if (0 != (_jtmaxtype(a, HEAP32[f + 12 >> 2], HEAP32[d + 12 >> 2]) & 64 | 0) && 2 != (HEAP32[e >> 2] | 0)) {
+        g = a + 205336;
+        h = HEAP32[g >> 2];
+        HEAP32[g >> 2] = 0;
+        j = _jtccvt(a, 64, f, b);
+        HEAP32[g >> 2] = h;
+        0 == j << 24 >> 24 ? (j = HEAP32[a + 4408 >> 2], h = HEAP32[j + (HEAP32[j >> 2] + 12) >> 2], _jtjsigstr(a, 3, HEAP32[h + 20 >> 2], h + HEAP32[h >> 2]), b = 0, j = HEAP32[g >> 2]) : (b = HEAP32[b >> 2], j = h);
+        HEAP32[g >> 2] = 0;
+        h = _jtccvt(a, 64, d, c);
+        HEAP32[g >> 2] = j;
+        0 == h <<
+            24 >> 24 ? (h = HEAP32[a + 4408 >> 2], g = HEAP32[h + (HEAP32[h >> 2] + 12) >> 2], _jtjsigstr(a, 3, HEAP32[g + 20 >> 2], g + HEAP32[g >> 2]), g = 0) : g = HEAP32[c >> 2];
+        g = _jtrank2ex(a, b, g, 0, 0, 0, 2020);
+        if (0 != (g | 0)) return STACKTOP = c, g;
+        g = a + 204545;
+        if (2 <= (HEAP8[g] - 51 & 255)) return STACKTOP = c, 0;
+        HEAP8[g] = 0;
+        HEAP32[a + 4400 >> 2] = 0;
+        HEAP32[e >> 2] = 2;
+        g = _jtva1(a, d, -112);
+        a = _jtva2(a, g, _jtva1(a, f, -112), 37);
+        STACKTOP = c;
+        return a
+    }
+    HEAP32[e >> 2] = 2;
+    e = _jtva1(a, d, -112);
+    a = _jtva2(a, e, _jtva1(a, f, -112), 37);
+    STACKTOP = c;
+    return a
+}
 var initialStackTop, preloadStartTime = null,
     calledMain = !1,
     dependenciesFulfilled = function runCaller() {
@@ -38917,7 +39491,7 @@ var Runtime = {
         return e
     },
     dynCall: function(a, f, d) {
-        return d && d.length ? FUNCTION_TABLE[f].apply(null, d) : FUNCTION_TABLE[f]()
+        return d && d.length ? getFUNCTION_TABLE(f).apply(null, d) : FUNCTION_TABLE[f]()
     },
     addFunction: function(a) {
         var f =
@@ -39539,6 +40113,8 @@ var ctlz_i8 = allocate([8, 7, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
 ], "i8", ALLOC_DYNAMIC);
 
+
+
 var initAllocate = function() {
 
 allocate([24, 45, 68, 84, 251, 33, 9, 64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 240, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 0, 17, 0, 0, 0, 18, 0, 0, 0, 0, 19, 20, 0, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 22, 23, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 27, 28, 29, 30, 0, 0, 31, 32, 33, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -39868,7 +40444,16 @@ allocate([240, 63, 0, 0, 0, 0, 0, 0, 36, 64, 0, 0, 0, 0, 0, 0, 89, 64, 0, 0, 0, 
     112, 95, 49, 38, 42, 0, 0
 ], "i8", ALLOC_NONE, Runtime.GLOBAL_BASE + 112638);
 }
+
+var ctlz_i8 = allocate([8, 7, 6, 6, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+], "i8", ALLOC_DYNAMIC);
+
+
 initAllocate();
+
+
+
 
 console.log('HEAP8: ' + HEAP8[99]);
 function runPostSets() {}
@@ -42901,7 +43486,7 @@ function _qsort(a, f, d, c) {
     if (!(0 == f || 0 == d)) {
         for (var b = [], e = 0; e < f; e++) b.push(e);
         b.sort(function(b, e) {
-            return FUNCTION_TABLE[c](a + b * d, a + e * d)
+            return getFUNCTION_TABLE(c)(a + b * d, a + e * d)
         });
         var g = _malloc(f * d);
         _memcpy(g, a, f * d);
@@ -46359,7 +46944,7 @@ function _jtshowerr(a) {
             HEAP8[l] = 0;
             j = f;
             if (0 == (HEAP32[a + 204976 >> 2] | 0)) {
-                if (h = HEAP32[a + 205628 >> 2], 0 != (h | 0)) FUNCTION_TABLE[h](a, 2, d)
+                if (h = HEAP32[a + 205628 >> 2], 0 != (h | 0)) getFUNCTION_TABLE(h)(a, 2, d)
             } else _memcpy(j, 113016, 24) | 0, HEAP8[j] = 50, HEAP32[a + 204972 >> 2] = d,
                 h = a + 204545, e = HEAP8[h], g = HEAP32[c >> 2], HEAP8[h] = 0, HEAP32[c >> 2] = 0, i = a + 1040, HEAP8[i] = 1, k = _strlen(j), m = _jtga(a, 2, k, 1, 0), 0 == (m | 0) ? j = 0 : (_memcpy(m + HEAP32[m >> 2], j, k) | 0, j = m), _jtexec1(a, j), HEAP8[i] = 0, HEAP8[h] = e, HEAP32[c >> 2] = g
         }
@@ -46401,7 +46986,7 @@ function _jtwri(a, f, d, c, b) {
     j = a + 205288;
     if (0 != (HEAP8[a + 205709] | 0))
         if (i = _strlen(d), l = _strlen(j), k = 1023 - i - l, c = (m = (k | 0) < (c | 0)) ? k - 3 : c, _memcpy(h, d, i) | 0, _memcpy(g + i, b, c) | 0, b = c + i, i = g + b, m ? (HEAP8[i] = HEAP8[119360], HEAP8[i + 1 | 0] = HEAP8[119361], HEAP8[i + 2 | 0] = HEAP8[119362], d = b + (g + 3)) : d = i, _memcpy(d, j, l) | 0, HEAP8[d + l] = 0, l = e, 0 == (HEAP32[a + 204976 >> 2] | 0)) {
-            if (d = HEAP32[a + 205628 >> 2], 0 != (d | 0)) FUNCTION_TABLE[d](a, f, h)
+            if (d = HEAP32[a + 205628 >> 2], 0 != (d | 0)) getFUNCTION_TABLE(d)(a, f, h)
         } else _memcpy(l, 113016, 24) | 0, HEAP8[l] = f + 48, HEAP32[a +
             204972 >> 2] = h, h = a + 204545, f = HEAP8[h], d = a + 4400, j = HEAP32[d >> 2], HEAP8[h] = 0, HEAP32[d >> 2] = 0, i = a + 1040, HEAP8[i] = 1, g = _strlen(l), b = _jtga(a, 2, g, 1, 0), 0 == (b | 0) ? b = 0 : _memcpy(b + HEAP32[b >> 2], l, g) | 0, _jtexec1(a, b), HEAP8[i] = 0, HEAP8[h] = f, HEAP32[d >> 2] = j;
     STACKTOP = e
@@ -46985,6 +47570,64 @@ function _plusII(a, f, d, c, b, e, g) {
             for (e = 0;;)
                 if (g = e + 1, (g | 0) < (d | 0)) e = g;
                 else break
+}
+
+function _plusBD(a, f, d, c, b, e, g) {
+    var h, j, i, l, k;
+    if (1 == (c | 0)) {
+        if (0 < (d | 0)) {
+            h = 0;
+            j = e;
+            for (i = b;;)
+                if (HEAPF64[i >> 3] = (HEAP8[j] | 0) + HEAPF64[g >> 3], a = h + 1, (a | 0) < (d | 0)) h = a, g += 8, j += 1, i += 8;
+                else break
+        }
+    } else if (i = 0 < (d | 0), 0 == f << 24 >> 24) {
+        if (i) {
+            f = 0 < (c | 0);
+            j = g;
+            g = 0;
+            h = e;
+            for (a = b;;) {
+                b = j + 8;
+                i = HEAPF64[j >> 3];
+                if (f) {
+                    l = a + (c << 3);
+                    k = h;
+                    j = 0;
+                    for (e = a;;)
+                        if (HEAPF64[e >> 3] = i + (HEAP8[k] | 0), a = j + 1, (a | 0) < (c | 0)) k += 1, j = a, e += 8;
+                        else break;
+                    k = h + c
+                } else k = h, l = a;
+                e = g + 1;
+                if ((e | 0) < (d | 0)) j = b, g = e, h = k, a = l;
+                else break
+            }
+        }
+    } else if (i) {
+        i = 0 < (c | 0);
+        l = 0;
+        a = g;
+        g = e;
+        for (e = b;;) {
+            b = g +
+                1;
+            if (i) {
+                k = HEAP8[g] | 0;
+                h = e + (c << 3);
+                g = 0;
+                j = a;
+                for (f = e;;)
+                    if (HEAPF64[f >> 3] = k + HEAPF64[j >> 3], e = g + 1, (e | 0) < (c | 0)) g = e, j += 8, f += 8;
+                    else break;
+                a += c << 3
+            } else h = e;
+            f = l + 1;
+            if ((f | 0) < (d | 0)) l = f, g = b, e = h;
+            else break
+        }
+    }
 }
 
 function _jtboxs(a, f) {
@@ -48319,14 +48962,14 @@ function _jtcut2(a, f, d, c) {
                                 Ya = Qa = c + Ja;
                                 lb = HEAP32[Ya >> 2];
                                 Ca = lb & 256;
-                                if (gb = 0 == (Ca | 0)) return y = Fa = FUNCTION_TABLE[s](a, d, r), STACKTOP = e, y;
+                                if (gb = 0 == (Ca | 0)) return y = Fa = getFUNCTION_TABLE(s)(a, d, r), STACKTOP = e, y;
                                 Za = p + 16;
                                 ib = qb = c + Za;
                                 ub = HEAP32[ib >> 2];
                                 eb = ub + 20;
                                 rb = HEAP32[eb >> 2];
                                 (wb = 0 == (rb | 0)) ? (Ka = a + 4408, ob = nb = Va = HEAP32[Ka >> 2], cb = HEAP32[ob >>
-                                    2], Wa = cb + 36, Cb = yb = nb + Wa, Pb = HEAP32[Cb >> 2], zb = Pb + 20, Zb = HEAP32[zb >> 2], Hb = ac = Pb, Ib = HEAP32[Hb >> 2], Qb = ac + Ib, _jtjsigstr(a, 9, Zb, Qb), y = 0) : (Ob = Rb = ub, Bb = HEAP32[Ob >> 2], dc = xb = Rb + Bb, Mb = oc = tb = HEAP32[dc >> 2], Tb = HEAP32[Mb >> 2], Nb = Ra = oc + Tb, Ab = sb = HEAP32[Nb >> 2], y = Eb = FUNCTION_TABLE[Ab](a, d, tb));
+                                                                                                                   2], Wa = cb + 36, Cb = yb = nb + Wa, Pb = HEAP32[Cb >> 2], zb = Pb + 20, Zb = HEAP32[zb >> 2], Hb = ac = Pb, Ib = HEAP32[Hb >> 2], Qb = ac + Ib, _jtjsigstr(a, 9, Zb, Qb), y = 0) : (Ob = Rb = ub, Bb = HEAP32[Ob >> 2], dc = xb = Rb + Bb, Mb = oc = tb = HEAP32[dc >> 2], Tb = HEAP32[Mb >> 2], Nb = Ra = oc + Tb, Ab = sb = HEAP32[Nb >> 2], y = Eb = getFUNCTION_TABLE(Ab)(a, d, tb));
                                 STACKTOP = e;
                                 return y
                             }
@@ -49328,7 +49971,7 @@ function _jtcut2(a, f, d, c) {
                                                         dz = HEAP32[cz >> 2];
                                                         Oz = _jtiden(a, dz);
                                                         (HC = 0 == (Oz | 0)) ? ez = 0: (pw = SA = Oz, rA = HEAP32[pw >>
-                                                            2], Bw = hv = SA + rA, fz = iv = HEAP32[Bw >> 2], ez = Pz = FUNCTION_TABLE[fz](a, iy, Oz));
+                                                                                                                  2], Bw = hv = SA + rA, fz = iv = HEAP32[Bw >> 2], ez = Pz = getFUNCTION_TABLE(fz)(a, iy, Oz));
                                                         ax = HEAP8[iu];
                                                         iD = 0 == ax << 24 >> 24;
                                                         if (!iD) {
@@ -49361,7 +50004,7 @@ function _jtcut2(a, f, d, c) {
                                                                 cy = Dw;
                                                                 break
                                                             } else cy = Dw
-                                                } else hC = OA - Iu, iC = Math_imul(hC, aj) | 0, yz = Bx + iC, nB = Math_imul($x, li) | 0, FUNCTION_TABLE[nw](a, 1, nB, $x, Yx, yz), cy = Ky;
+                                                } else hC = OA - Iu, iC = Math_imul(hC, aj) | 0, yz = Bx + iC, nB = Math_imul($x, li) | 0, getFUNCTION_TABLE(nw)(a, 1, nB, $x, Yx, yz), cy = Ky;
                                             while (0);
                                             CB = Yx + Mt;
                                             QD = Iu - Yu;
@@ -49379,7 +50022,7 @@ function _jtcut2(a, f, d, c) {
                                         DB = HEAP32[30860];
                                         my = _jtamp(a, tz, DB);
                                         if (iF = 0 == (my | 0)) b = 316;
-                                        else if (tA = pB = my, TA = HEAP32[tA >> 2], Sy = Gx = pB + TA, Ju = UA = HEAP32[Sy >> 2], KC = FUNCTION_TABLE[Ju](a, jz, my), LC = 0 == (KC | 0)) b = 316;
+                                        else if (tA = pB = my, TA = HEAP32[tA >> 2], Sy = Gx = pB + TA, Ju = UA = HEAP32[Sy >> 2], KC = getFUNCTION_TABLE(Ju)(a, jz, my), LC = 0 == (KC | 0)) b = 316;
                                         else return y = KC, STACKTOP = e, y
                                     }
                                 while (0);
@@ -49506,7 +50149,7 @@ function _jtcut2(a, f, d, c) {
                     a: do
                         if (329 == b) {
                             if (PG = 0 == (Uf | 0)) return fI = HEAP32[30648],
-                                QG = _jtreitem(a, fI, d), (eG = 0 == (Tj | 0)) ? nz = gI = FUNCTION_TABLE[s](a, QG, r) : (xD = HEAP32[bl >> 2], (xJ = 0 == (xD | 0)) ? nz = 0 : (LI = KI = xD, AH = HEAP32[LI >> 2], oF = fG = KI + AH, pF = BH = HEAP32[oF >> 2], nz = yJ = FUNCTION_TABLE[pF](a, QG, xD))), RG = a + 204545, HEAP8[RG] = 0, CA = a + 4400, HEAP32[CA >> 2] = 0, GE = HEAP32[30648], QC = 0 != (nz | 0), zJ = HEAP32[31086], qC = QC ? nz : zJ, ($D = 0 == (qC | 0)) ? oy = 0 : (MI = qC + 24, rC = HEAP32[MI >> 2], bB = _jtga(a, 4, rC, 1, 0), (sB = 0 == (bB | 0)) ? oy = 0 : (NI = gG = qC + 28, sC = qF = bB, LB = HEAP32[sC >> 2], rF = qF + LB, CH = rC << 2, _memcpy(rF, NI, CH) | 0, oy = bB)), yD = _jtover(a, GE, oy),
+                            QG = _jtreitem(a, fI, d), (eG = 0 == (Tj | 0)) ? nz = gI = getFUNCTION_TABLE(s)(a, QG, r) : (xD = HEAP32[bl >> 2], (xJ = 0 == (xD | 0)) ? nz = 0 : (LI = KI = xD, AH = HEAP32[LI >> 2], oF = fG = KI + AH, pF = BH = HEAP32[oF >> 2], nz = yJ = getFUNCTION_TABLE(pF)(a, QG, xD))), RG = a + 204545, HEAP8[RG] = 0, CA = a + 4400, HEAP32[CA >> 2] = 0, GE = HEAP32[30648], QC = 0 != (nz | 0), zJ = HEAP32[31086], qC = QC ? nz : zJ, ($D = 0 == (qC | 0)) ? oy = 0 : (MI = qC + 24, rC = HEAP32[MI >> 2], bB = _jtga(a, 4, rC, 1, 0), (sB = 0 == (bB | 0)) ? oy = 0 : (NI = gG = qC + 28, sC = qF = bB, LB = HEAP32[sC >> 2], rF = qF + LB, CH = rC << 2, _memcpy(rF, NI, CH) | 0, oy = bB)), yD = _jtover(a, GE, oy),
                                 y = hG = _jtiota(a, yD), STACKTOP = e, y;
                             sF = _jtga(a, 32, Uf, 1, 0);
                             if (cB = 0 == (sF | 0)) return y = 0, STACKTOP = e, y;
@@ -49562,7 +50205,7 @@ function _jtcut2(a, f, d, c) {
                                             for (eE = 0;;)
                                                 if (mG = XG + (eE << 2), xF = HEAP32[mG >> 2], aq ? (KE = xF, yF = vC = eA = KE + gl) : yF = xF, LE = Ay + (eE << 2), HEAP32[LE >> 2] = yF, UC = eE + 1, RI = (UC | 0) < (SC | 0)) eE = UC;
                                                 else break;
-                                        eB = FUNCTION_TABLE[s](a, fx, r);
+                                        eB = getFUNCTION_TABLE(s)(a, fx, r);
                                         if (OK = 0 == (eB | 0)) {
                                             y = 0;
                                             b = 425;
@@ -49680,7 +50323,7 @@ function _jtcut2(a, f, d, c) {
                                         2];
                                     nE = hK = tG + ZC;
                                     LH = JA = HEAP32[nE >> 2];
-                                    YB = FUNCTION_TABLE[LH](a, GF, fH);
+                                    YB = getFUNCTION_TABLE(LH)(a, GF, fH);
                                     if (hx = 0 == (YB | 0)) {
                                         y = 0;
                                         b = 425;
@@ -49782,7 +50425,7 @@ function _jtcut2(a, f, d, c) {
                                     XK = $I + WK;
                                     OF = Math_imul(lK, aj) | 0;
                                     _memcpy(XK, eD, OF) | 0;
-                                    pE = FUNCTION_TABLE[s](a, TH, r);
+                                    pE = getFUNCTION_TABLE(s)(a, TH, r);
                                     if (PQ = 0 == (pE | 0)) {
                                         y = 0;
                                         b = 425;
@@ -49900,7 +50543,7 @@ function _jtcut2(a, f, d, c) {
                                     tE = HEAP32[sE >> 2];
                                     yB = EC = bF + tE;
                                     vS = uE = HEAP32[yB >> 2];
-                                    kJ = FUNCTION_TABLE[vS](a, hL, pH);
+                                    kJ = getFUNCTION_TABLE(vS)(a, hL, pH);
                                     if ($M = 0 == (kJ | 0)) {
                                         y = 0;
                                         b = 425;
@@ -50961,7 +51604,7 @@ function _jtrank1ex(a, f, d, c, b) {
         p ? (q = m + c, r = 0 > (q | 0) ? 0 : q) :
             r = (m | 0) > (c | 0) ? c : m;
         q = m - r;
-        if ((m | 0) == (r | 0)) return i = FUNCTION_TABLE[b](a, f, d);
+        if ((m | 0) == (r | 0)) return i = getFUNCTION_TABLE(b)(a, f, d);
         a: do
             if (0 < (q | 0)) {
                 for (s = 0;;) {
@@ -50990,7 +51633,7 @@ function _jtrank1ex(a, f, d, c, b) {
                 if (0 == (A | 0)) return i = 0;
                 D = _jtrank1ex(a, v, d, 0, b);
                 if (0 == (D | 0)) return i = 0;
-                B = FUNCTION_TABLE[b](a, s + (HEAP32[u + (s + 4) >> 2] + u), d);
+                B = getFUNCTION_TABLE(b)(a, s + (HEAP32[u + (s + 4) >> 2] + u), d);
                 if (0 == (B | 0)) return i = 0;
                 G = D;
                 C = B;
@@ -51056,7 +51699,7 @@ function _jtrank1ex(a, f, d, c, b) {
                 M = L;
                 P = HEAP32[L >> 2];
                 N = b;
-                B = FUNCTION_TABLE[N](a, L, d);
+                B = getFUNCTION_TABLE(N)(a, L, d);
                 if (0 == (B | 0)) return i = 0;
                 Z = _jtga(a, 32, ea, 1, 0);
                 if (0 == (Z | 0)) return i = 0;
@@ -51107,7 +51750,7 @@ function _jtrank1ex(a, f, d, c, b) {
                                 e = 181;
                                 break
                             }
-                            ia = FUNCTION_TABLE[N](a, L, d);
+                            ia = getFUNCTION_TABLE(N)(a, L, d);
                             HEAP32[aa + (Y << 2) >> 2] = ia;
                             if (0 == (ia | 0)) {
                                 i = 0;
@@ -51137,7 +51780,7 @@ function _jtrank1ex(a, f, d, c, b) {
     c = m - za;
     Ba = 0 == (k & 32 | 0) ? 0 : 0 != (HEAP32[f + 4 >> 2] & 14 | 0) |
         0;
-    if ((m | 0) == (za | 0)) return i = FUNCTION_TABLE[b](a, f, d);
+    if ((m | 0) == (za | 0)) return i = getFUNCTION_TABLE(b)(a, f, d);
     m = f + 28 + (c << 2);
     do
         if (0 < (za | 0)) {
@@ -51195,10 +51838,10 @@ function _jtrank1ex(a, f, d, c, b) {
             } else Ea = O, Sa = la;
     while (0);
     if (O = 0 != (qa | 0)) {
-        Oa = FUNCTION_TABLE[b](a, Ea, d);
+        Oa = getFUNCTION_TABLE(b)(a, Ea, d);
         if (0 == (Oa | 0)) return i = 0;
         Ga = Ha = Oa
-    } else Oa = a + 1176, Z = HEAP32[Oa >> 2], HEAP32[Oa >> 2] = 0, B = FUNCTION_TABLE[b](a, Ea, d), HEAP32[Oa >> 2] = Z, 0 != (HEAP8[ya] | 0) && (B = HEAP32[30648], HEAP8[ya] = 0, HEAP32[a + 4400 >> 2] = 0), Ha = B, Ga = 0;
+    } else Oa = a + 1176, Z = HEAP32[Oa >> 2], HEAP32[Oa >> 2] = 0, B = getFUNCTION_TABLE(b)(a, Ea, d), HEAP32[Oa >> 2] = Z, 0 != (HEAP8[ya] | 0) && (B = HEAP32[30648], HEAP8[ya] = 0, HEAP32[a + 4400 >> 2] = 0), Ha = B, Ga = 0;
     B = HEAP32[Ha +
         12 >> 2];
     Z = HEAP32[Ha + 24 >> 2];
@@ -51251,7 +51894,7 @@ function _jtrank1ex(a, f, d, c, b) {
                             } else Na = ka, $a = w;
                             $ = r + ua;
                             _memcpy($a, $, ua) | 0;
-                            x = FUNCTION_TABLE[la](a, Na, d);
+                            x = getFUNCTION_TABLE(la)(a, Na, d);
                             if (0 == (x | 0)) {
                                 i = 0;
                                 e = 181;
@@ -51345,7 +51988,7 @@ function _jtrank1ex(a, f, d, c, b) {
                             e = 181;
                             break
                         }
-                        v = FUNCTION_TABLE[la](a, gb, d);
+                        v = getFUNCTION_TABLE(la)(a, gb, d);
                         if (0 == (v | 0)) {
                             i = 0;
                             e = 181;
@@ -51467,7 +52110,7 @@ function _jtrank1ex(a, f, d, c, b) {
                         } else qb = Ga, ib = n;
                         Qa = oa + ua;
                         _memcpy(ib, Qa, ua) | 0;
-                        Ya = FUNCTION_TABLE[Za](a, qb, d);
+                        Ya = getFUNCTION_TABLE(Za)(a, qb, d);
                         if (0 == (Ya | 0)) {
                             i = 0;
                             e = 181;
@@ -51514,7 +52157,7 @@ function _jtrank1ex(a, f, d, c, b) {
                         e = 181;
                         break
                     }
-                    oa = FUNCTION_TABLE[Za](a, ob, d);
+                    oa = getFUNCTION_TABLE(Za)(a, ob, d);
                     if (0 == (oa | 0)) {
                         i = 0;
                         e = 181;
@@ -51623,14 +52266,14 @@ function _jtfpown(a, f, d) {
     d = HEAP32[g + (e + 16) >> 2];
     h = HEAP32[d + HEAP32[d >> 2] >> 2];
     if (0 == (h | 0)) return b = _jtca(a, f);
-    if (1 == (h | 0)) return d = HEAP32[g + (e + 8) >> 2], b = FUNCTION_TABLE[HEAP32[d + HEAP32[d >> 2] >> 2]](a, f, d);
+    if (1 == (h | 0)) return d = HEAP32[g + (e + 8) >> 2], b = getFUNCTION_TABLE(HEAP32[d + HEAP32[d >> 2] >> 2])(a, f, d);
     d = HEAP32[g + (e + 8) >> 2];
     e = HEAP32[a + 205752 >> 2] + HEAP32[a + 205692 >> 2];
     g = HEAP32[d + HEAP32[d >> 2] >> 2];
     if (0 < (h | 0)) j = 0;
     else return f;
     for (;;) {
-        f = FUNCTION_TABLE[g](a, f, d);
+        f = getFUNCTION_TABLE(g)(a, f, d);
         if (0 == (f | 0)) {
             b = 0;
             c = 8;
@@ -51671,6 +52314,7 @@ staticSealed = !0;
 STACK_MAX = STACK_BASE + 5242880;
 DYNAMIC_BASE = DYNAMICTOP = Runtime.alignMemory(STACK_MAX);
 assert(DYNAMIC_BASE < TOTAL_MEMORY, "TOTAL_MEMORY not big enough for stack");
+
 var FUNCTION_TABLE = [0, 0, window._anyneID||0, 0, window._anyneIB||0, 0, window._jtxrx||0, 0, window._jtrollx||0, 0, window._anyneII||0, 0, window._ifbneBB||0, 0, window._i0eqDD||0, 0, window._ifbneBI||0, 0, window._jtppq||0, 0, window._jtpps||0, 0, window._jtrollk||0, 0, window._jtioi||0, 0, window._i1eqIB||0, 0, window._neSS||0, 0, window._mininsX||0, 0, window._jtscind||0, 0, window._i1eqID||0, 0, window._i1eqII||0, 0, window._mininsS||0, 0, window._neSC||0, 0, window._mininsI||0, 0, window._jtiepdos||0, 0, window._mininsD||0, 0, window._jtpco2||0, 0, window._bw1000CC||0, 0, window._ifbltS||0, 0, window._ltDD||0, 0, window._ltDB||0, 0, window._jtundco2||0, 0, window._lcmZZ||0, 0, window._ltDI||0, 0, window._i0eqDB||0, 0, window._ifbneBD||0, 0, window._sumeqDB||0, 0, window._bw1011sfxI||0, 0, window._sumeqDD||0, 0, window._sumeqDI||0, 0, window._i0eqDI||0, 0, window._bw1110sfxI||0, 0, window._bw0001II||0, 0, window._jtdx_next||0, 0, window._jtanyebar||0, 0, window._jtpderiv1||0, 0, window._jtpderiv2||0, 0, window._anygtBD||0,
     0, window._anygtBB||0, 0, window._jtrngraw||0, 0, window._anygtBI||0, 0, window._j0geBI||0, 0, window._sumgtID||0, 0, window._sumgtIB||0, 0, window._absQ||0, 0, window._jtddot1||0, 0, window._j0geBB||0, 0, window._jtiobs||0, 0, window._absZ||0, 0, window._absX||0, 0, window._sumgtII||0, 0, window._absD||0, 0, window._cirID||0, 0, window._absI||0, 0, window._allneII||0, 0, window._jtpunc||0, 0, window._allneID||0, 0, window._jtbitwise0000||0, 0, window._jtbitwise0001||0, 0, window._jti0eps||0, 0, window._jtscapco1||0, 0, window._jtscapco2||0, 0, window._jtioax1||0, 0, window._pixX||0, 0, window._tymesBD||0, 0, window._jtsuffix||0, 0, window._tymesBI||0, 0, window._jtj0eps||0, 0, window._amipn2||0, 0, window._jtposq||0, 0, window._jtposs||0, 0, window._powZZ||0, 0, window._jtreshape||0, 0, window._maxDI||0, 0, window._plusQQ||0, 0, window._divXX||0, 0, window._maxDB||0, 0, window._maxDD||0, 0, window._jtdet||0, 0, window._j1ltDI||0, 0, window._jtderiv1||0, 0, window._logX||0, 0, window._j1ltDD||0, 0, window._j1ltDB||0, 0, window._sqrtQ||0, 0, window._sqrtX||0, 0,
     window._sqrtZ||0, 0, window._remII||0, 0, window._minusBD||0, 0, window._sqrtD||0, 0, window._sqrtI||0, 0, window._idf||0, 0, window._plusinsZ||0, 0, window._plusinsD||0, 0, window._plusinsB||0, 0, window._plusinsO||0, 0, window._jthktake||0, 0, window._plusinsI||0, 0, window._jtfitpoly2||0, 0, window._jtgoutfix||0, 0, window._jtdiff0||0, 0, window._jtlocexmark||0, 0, window._jtcrc1||0, 0, window._jtply1s||0, 0, window._sumneID||0, 0, window._j0geS||0, 0, window._sumneIB||0, 0, window._sumneII||0, 0, window._jtevmq||0, 0, window._jtlcapco||0, 0, window._jtevms||0, 0, window._anyleDB||0, 0, window._powDI||0, 0, window._anyleDD||0, 0, window._i1neII||0, 0, window._powDD||0, 0, window._i1neID||0, 0, window._anyleDI||0, 0, window._i1neIB||0, 0, window._powDB||0, 0, window._i0neS||0, 0, window._with2||0, 0, window._i0neC||0, 0, window._neBD||0, 0, window._neBB||0, 0, window._jtsfrom||0, 0, window._neBI||0, 0, window._amccv2||0, 0, window._withr||0, 0, window._jtapplystr||0, 0, window._i1neS||0, 0, window._nandinsB||0, 0, window._nepfxB||0, 0, window._jtdbstepover2||0,
