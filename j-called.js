@@ -306,6 +306,109 @@ function _Jinput_(a) {
     return 124568
 }
 
+function _withr(a, f, d) {
+    var c, b, e;
+    c = d;
+    b = HEAP32[d >> 2];
+    d = HEAP32[b + (c + 8) >> 2];
+    e = 0 == (d | 0) ? 0 : HEAP32[d + (HEAP32[d >> 2] + 4) >> 2];
+    b = HEAP32[b + (c + 12) >> 2];
+    c = HEAP32[a + 205336 >> 2];
+    return 0 == (c | 0) ? FUNCTION_TABLE[e](a, f, b, d) : _jtirs2(a, f, b, d, HEAP32[c + 4 >> 2], HEAP32[b + 24 >> 2], e)
+}
+
+function _secf2(a, f, d, c) {
+    var b;
+    b = HEAP32[c + (HEAP32[c >> 2] + 16) >> 2];
+    0 == (HEAP32[a + 205588 >> 2] | 0) ? a = FUNCTION_TABLE[HEAP32[b + (HEAP32[b >> 2] + 4) >> 2]](a, f, d, c) : (c = HEAP32[a + 4408 >> 2], d = HEAP32[c + (HEAP32[c >> 2] + 112) >> 2], _jtjsigstr(a, 28, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]), a = 0);
+    return a
+}
+
+function _secf1(a, f, d) {
+    var c;
+    c = HEAP32[d + (HEAP32[d >> 2] + 16) >> 2];
+    0 == (HEAP32[a + 205588 >> 2] | 0) ? a = FUNCTION_TABLE[HEAP32[c + HEAP32[c >> 2] >> 2]](a, f, d) : (d = HEAP32[a + 4408 >> 2], f = HEAP32[d + (HEAP32[d >> 2] + 112) >> 2], _jtjsigstr(a, 28, HEAP32[f + 20 >> 2], f + HEAP32[f >> 2]), a = 0);
+    return a
+}
+
+function _jtjfwrite(a, f, d) {
+    var c, b;
+    if (0 == (f | 0) | 0 == (d | 0)) return 0;
+    c = HEAP32[f + 24 >> 2];
+    if (0 < (HEAP32[d + 24 >> 2] | 0)) return a = _jtrank2ex(a, f, d, 0, 2147483647, 0, 934);
+    if (0 != (HEAP32[d + 12 >> 2] & 32 | 0)) {
+        if (2 <= (c | 0)) return b = HEAP32[a + 4408 >> 2], d = HEAP32[b + (HEAP32[b >> 2] + 56) >> 2], _jtjsigstr(a, 14, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]), 0;
+        if (0 != (HEAP32[f + 20 >> 2] | 0) && 0 == (HEAP32[f + 12 >> 2] & 131074 | 0)) return d = HEAP32[a + 4408 >> 2], b = HEAP32[d + (HEAP32[d >> 2] + 12) >> 2], _jtjsigstr(a, 3, HEAP32[b + 20 >> 2], b + HEAP32[b >> 2]), 0
+    }
+    c = _jtstdf(a, d);
+    d = a + 204545;
+    if (0 !=
+        (HEAP8[d] | 0)) return 0;
+    b = c;
+    if (4 == (b | 0)) {
+        d = HEAP32[f + 20 >> 2];
+        if ((d | 0) == (_fwrite(f + HEAP32[f >> 2], 1, d, HEAP32[_stdout >> 2]) | 0)) return f;
+        _jtjerrno(a);
+        a = 0
+    } else if (2 == (b | 0)) d = a + 205709, c = HEAP8[d], HEAP8[d] = 1, b = a + 204968, HEAP32[b >> 2] = 6, _jtjpr(a, f), HEAP32[b >> 2] = 0, HEAP8[d] = c, a = f;
+    else if (5 == (b | 0)) {
+        b = HEAP32[f + 20 >> 2];
+        if ((b | 0) == (_fwrite(f + HEAP32[f >> 2], 1, b, HEAP32[_stderr >> 2]) | 0)) return f;
+        _jtjerrno(a);
+        a = 0
+    } else _fflush(c), a = 0 != (HEAP8[d] | 0) ? 0 : HEAP32[31088];
+    return a
+}
+
+function _jtstdf(a, f) {
+    var d, c, b, e;
+    d = 0;
+    for (c = f;;) {
+        if (0 == (c | 0)) {
+            b = 0;
+            d = 21;
+            break
+        }
+        if (0 == (HEAP32[c + 20 >> 2] | 0)) {
+            d = 4;
+            break
+        }
+        if (0 != (HEAP32[c + 24 >> 2] | 0)) {
+            d = 6;
+            break
+        }
+        if (0 == (HEAP32[c + 12 >> 2] & 32 | 0)) {
+            d = 18;
+            break
+        }
+        f = c + HEAP32[c >> 2];
+        e = 0 == (HEAP32[c + 4 >> 2] & 14 | 0) ? HEAP32[f >> 2] : HEAP32[f >> 2] + c;
+        f = HEAP32[e + 12 >> 2];
+        if (0 != (f & 2 | 0)) {
+            d = 12;
+            break
+        }
+        if (0 == (f & 5 | 0)) {
+            d = 17;
+            break
+        } else c = e
+    }
+    if (4 == d) return f = HEAP32[a + 4408 >> 2], d = HEAP32[f + (HEAP32[f >> 2] + 36) >> 2], _jtjsigstr(a, 9, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]), 0;
+    if (6 == d) return d = HEAP32[a + 4408 >> 2], f = HEAP32[d +
+        (HEAP32[d >> 2] + 56) >> 2], _jtjsigstr(a, 14, HEAP32[f + 20 >> 2], f + HEAP32[f >> 2]), 0;
+    if (12 == d) {
+        if (2 <= (HEAP32[e + 24 >> 2] | 0)) return f = HEAP32[a + 4408 >> 2], d = HEAP32[f + (HEAP32[f >> 2] + 56) >> 2], _jtjsigstr(a, 14, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]), 0;
+        if (0 != (HEAP32[e + 20 >> 2] | 0)) return 0;
+        e = HEAP32[a + 4408 >> 2];
+        d = HEAP32[e + (HEAP32[e >> 2] + 36) >> 2];
+        _jtjsigstr(a, 9, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]);
+        return 0
+    }
+    if (17 == d) return d = HEAP32[a + 4408 >> 2], e = HEAP32[d + (HEAP32[d >> 2] + 12) >> 2], _jtjsigstr(a, 3, HEAP32[e + 20 >> 2], e + HEAP32[e >> 2]), 0;
+    if (18 == d) return e = _jti0(a,
+        c), 0 == (e | 0) ? (c = HEAP32[a + 4408 >> 2], d = HEAP32[c + (HEAP32[c >> 2] + 104) >> 2], _jtjsigstr(a, 26, HEAP32[d + 20 >> 2], d + HEAP32[d >> 2]), b = 0) : b = e, b;
+    if (21 == d) return b
+}
 function _jtshapex(a, f) {
     var d, c;
     if (0 == (f | 0)) return 0;
