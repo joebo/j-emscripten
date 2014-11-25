@@ -15,6 +15,7 @@
              url('SourceCodePro-Medium.ttf.woff') format('truetype'),
              url('SourceCodePro-Medium.svg') format('svg');
       }
+      textarea { font-size:8pt;}
       body {
         background-color: #fff;
         color: #242625;
@@ -222,7 +223,7 @@ jQuery(document).ready(function($) {
         */
         window.prompt = function(x) { return $('#Script').val() + '\n)\n' };
         process('SCRIPT =: 0 : 0');
-        process("(0!:100) SCRIPT");
+        process("(0!:101) SCRIPT");
     });
     $('#Cls').click(function() {
         myterm.clear();
