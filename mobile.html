@@ -3,9 +3,13 @@
   <head>
     <title>J interpreter</title>
     <script src="jquery-1.7.1.min.js"></script>
+    <style>
+      body { font-family: arial; }
+    </style>
+
     </head>
 <body>
-
+    
 <script type="text/javascript">
   var myterm = false;
   var Module = {
@@ -129,7 +133,7 @@ $(function() {
 
     $('#Input').focus();
     $('#Input').val('');
-    $('#Output').val('');
+    $('#Output').val('type qq for help');
 });
 
 
@@ -189,7 +193,9 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
 
 
 </script>
-<div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;">
+<div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
+  To maximize screen space, all commands are executed with chords. The default chord is qq. To execute a command type qq quickly and then the chord key.<br>
+  Keys:<br>
     x = run
 </div>
 
