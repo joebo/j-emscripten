@@ -107,6 +107,9 @@ $(function() {
             $('#Input').val( $('#Input').val() + 'smoutput <"0 i.5\n')
             runScript();
         }
+        if (key == 79 /* o */) {
+            $('#Input').val( $('#Input').val() + "smoutput ")
+        }
 
     }
     var chordTime = 0;
@@ -226,6 +229,7 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
     <li>d = show canvas window</li>
     <li>1 = preset 1 (canvas example)</li>
     <li>0 = preset 0 (smoutput example)</li>
+    <li>o = add smoutput</li>
     </ul>
 </div>
 <div id="CanvasDialog" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
