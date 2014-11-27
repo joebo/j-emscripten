@@ -104,6 +104,17 @@ $(function() {
     var noChordTimer = 0;
     var CHORD_TIME = 500;
 
+    $('#Input').on('input', function() {
+        output('input');
+    });
+    $('#Input').on('keyup', function() {
+        output('keyup');
+    });
+
+    $('#Input').on('keydown', function() {
+        output('keydown');
+    });
+    
     $('#Input').keypress(function(e) {
         if (noChordTimer) { clearInterval(noChordTimer) }
 
