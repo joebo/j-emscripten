@@ -19,8 +19,7 @@
     postRun: [],
     print: (function() {
         return function(text) {
-            console.log(text);
-            $('#Output').val(text);
+            $('#Output').val( $('#Output').val() + text);
         };
     })()
   };
@@ -44,10 +43,9 @@ $(function() {
 
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height() * (2.0/3.0);
-        $('#Input').height(height-100).width(width);
+        var height = $(window).height() -35;
+        $('#Input').height(height-50).width(width);
         $('#Output').height(100).width(width);
-        output('height: ' + height + ' width: ' + width);
         return false;
     }
     
@@ -80,6 +78,30 @@ $(function() {
         if (key == 88 /* 'x' */) {
             runScript();
         }
+        if (key == 16 /* S */) {
+            $('#Input').height($('#Input').height()+50);
+        }
+        if (key == 83 /* S */) {
+            $('#Input').height($('#Input').height()-50);
+        }
+        if (key == 67 /* c */) {
+            $('#Output').val();
+        }
+        if (key == 65 /* a */) {
+            $('#Input').select();
+        }
+        if (key == 16 /* A */) {
+            $('#Output').select();
+        }
+        if (key == 68 /* d */) {
+            $('#CanvasDialog').show();
+        }
+        if (key == 49 /* 1 */) {
+            $('#Input').val( $('#Input').val() + "'drawRect' (15!:0) (10,10,100,100)\n")
+            $('#CanvasDialog').show();
+            runScript();
+        }
+
     }
     var chordTime = 0;
     var chordWait = false;
@@ -95,10 +117,11 @@ $(function() {
 
     
     $('#Input').on('keydown', function(e) {
+        $('#CanvasDialog').hide();
         if (noChordTimer) { clearInterval(noChordTimer) }
 
         var keyCode = (e.keyCode ? e.keyCode : e.which);
-        output(keyCode);
+        //output(keyCode);
         if (chordWait) {
             fireChord(keyCode);
             clearInterval(helpTimer);
@@ -117,7 +140,6 @@ $(function() {
                 noChordTimer = setTimeout(function() { $('#Input').val( $('#Input').val() + 'q') }, CHORD_TIME+100);
             }
             chordTime = ts + CHORD_TIME;
-            output(chordTime);
             e.preventDefault();
             return false;
         }
@@ -186,10 +208,22 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
 
 
 </script>
-<div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
+<div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:700px">
   To maximize screen space, all commands are executed with chords. The default chord is qq. To execute a command type qq quickly and then the chord key.<br>
-  Keys:<br>
-    x = run
+  Keys:
+    <ul>
+    <li>x = run</li>
+    <li>s = shrink input</li>
+    <li>S = expand input</li>
+    <li>c = clear output window</li>
+    <li>a = select input text, A = select output text</li>
+    <li>d = show canvas window</li>
+    <li>1 = preset 1 (canvas example)</li>
+    </ul>
+</div>
+<div id="CanvasDialog" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
+      <canvas id="Canvas" width="500" height="500" style="border:1px solid #000000;">
+      </canvas>
 </div>
 
 </body>
