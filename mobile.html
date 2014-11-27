@@ -5,6 +5,7 @@
     <script src="jquery-1.7.1.min.js"></script>
     <style>
       body { font-family: arial; }
+      textarea { font-size: 0.75em; }
     </style>
 
     </head>
@@ -43,9 +44,9 @@ $(function() {
 
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height()-100;
-        $('#Input').height(height-50).width(width);
-        $('#Output').height(50).width(width);
+        var height = $(window).height()-300;
+        $('#Input').height(height-100).width(width);
+        $('#Output').height(100).width(width);
         return false;
     }
     
@@ -80,10 +81,10 @@ $(function() {
             runScript();
         }
         if (key == 16 /* S */) {
-            $('#Input').height($('#Input').height()+50);
+            $('#Input').height($('#Input').height()+100);
         }
         if (key == 83 /* S */) {
-            $('#Input').height($('#Input').height()-50);
+            $('#Input').height($('#Input').height()-100);
         }
         if (key == 67 /* c */) {
             $('#Output').val('');
