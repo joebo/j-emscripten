@@ -74,12 +74,31 @@ $(function() {
         $('#Input').val('');
     });
 
+    function getLineNumber(textarea) {
+        return (textarea.value.substr(0, textarea.selectionStart).split("\n").length)
+    }
+
+    $.fn.selectRange = function(start, end) {
+        if(!end) end = start; 
+        return this.each(function() {
+            if (this.setSelectionRange) {
+                this.focus();
+                this.setSelectionRange(start, end);
+            } else if (this.createTextRange) {
+                var range = this.createTextRange();
+                range.collapse(true);
+                range.moveEnd('character', end);
+                range.moveStart('character', start);
+                range.select();
+            }
+        });
+    };
     var fireChord = function(key) {
         //output('chord hit ' + key);
         if (key == 88 /* 'x' */) {
             runScript();
         }
-        if (key == 16 /* S */) {
+        if (key == 86 /* v */) {
             $('#Input').height($('#Input').height()+100);
         }
         if (key == 83 /* S */) {
@@ -109,6 +128,19 @@ $(function() {
         }
         if (key == 79 /* o */) {
             $('#Input').val( $('#Input').val() + "smoutput ")
+        }
+        if (key == 89 /* y */) {
+            var line = getLineNumber($('#Input')[0])-1;
+            var lines = $.grep($('#Input').val().split('\n'), function(x,i) { return i != line }).join("\n");
+            $('#Input').val(lines);
+        }
+        if (key  == 74 /* k */) {
+            var pos = $('#Input')[0].selectionStart;
+            $('#Input').selectRange(pos-1,pos-1);
+        }
+        if (key  == 76 /* l */) {
+            var pos = $('#Input')[0].selectionStart;
+            $('#Input').selectRange(pos+1,pos+1);
         }
 
     }
@@ -230,6 +262,8 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
     <li>1 = preset 1 (canvas example)</li>
     <li>0 = preset 0 (smoutput example)</li>
     <li>o = add smoutput</li>
+    <li>y = kill current line</li>
+    <li>j = move left, l = move right</li>
     </ul>
 </div>
 <div id="CanvasDialog" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
