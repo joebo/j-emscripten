@@ -19,7 +19,7 @@
     postRun: [],
     print: (function() {
         return function(text) {
-            $('#Output').val( $('#Output').val() + text);
+            $('#Output').val( $('#Output').val() + text + "\n");
         };
     })()
   };
@@ -43,9 +43,9 @@ $(function() {
 
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height() -35;
+        var height = $(window).height()-100;
         $('#Input').height(height-50).width(width);
-        $('#Output').height(100).width(width);
+        $('#Output').height(50).width(width);
         return false;
     }
     
@@ -66,6 +66,7 @@ $(function() {
         
         var ret = _jtsymbis(a, jtnfs(a,noun.length,noun),script, jt_global)
 
+        $('#Output').val('');
         process('(0!:100) ' + noun);
     }
 
@@ -74,7 +75,7 @@ $(function() {
     });
 
     var fireChord = function(key) {
-        output('chord hit ' + key);
+        //output('chord hit ' + key);
         if (key == 88 /* 'x' */) {
             runScript();
         }
@@ -85,7 +86,7 @@ $(function() {
             $('#Input').height($('#Input').height()-50);
         }
         if (key == 67 /* c */) {
-            $('#Output').val();
+            $('#Output').val('');
         }
         if (key == 65 /* a */) {
             $('#Input').select();
@@ -101,6 +102,11 @@ $(function() {
             $('#CanvasDialog').show();
             runScript();
         }
+        if (key == 48 /* 0 */) {
+            $('#Output').val('');
+            $('#Input').val( $('#Input').val() + 'smoutput <"0 i.5\n')
+            runScript();
+        }
 
     }
     var chordTime = 0;
@@ -113,7 +119,7 @@ $(function() {
     }
 
     var noChordTimer = 0;
-    var CHORD_TIME = 500;
+    var CHORD_TIME = 750;
 
     
     $('#Input').on('keydown', function(e) {
@@ -219,6 +225,7 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
     <li>a = select input text, A = select output text</li>
     <li>d = show canvas window</li>
     <li>1 = preset 1 (canvas example)</li>
+    <li>0 = preset 0 (smoutput example)</li>
     </ul>
 </div>
 <div id="CanvasDialog" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:500px">
