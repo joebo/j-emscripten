@@ -37,9 +37,22 @@ $(function() {
     var output = function(text) {
         $('#Output').val( text + '\n' + $('#Output').val());
     }
+
+    var last_width = null;
+    var last_height = null;
+    
+    var getScreenHeight = function() {
+        if (this.last_width == null || this.last_height == null || this.last_width != $( window ).width())
+        {
+            this.last_height = window.innerHeight || $( window ).height();
+            this.last_width = $(window).width();
+        }
+        return this.last_height;
+    }
+    
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height()-35;
+        var height = getScreenHeight() - 35;
         $('#Input').height(height-100).width(width);
         $('#Output').height(100).width(width);
         output('height: ' + height + ' width: ' + width);
@@ -99,18 +112,19 @@ $(function() {
         }
 
         if (e.key == 'q') {
-            if (chordTime != 0 && e.timeStamp < chordTime) {
+            var ts = $.now();
+            if (chordTime != 0 && ts < chordTime) {
                 chordWait = true;
                 if (helpTimer) { clearInterval(helpTimer); }
                 helpTimer = setTimeout(showHelp, 2000);
             } else {
                 noChordTimer = setTimeout(function() { $('#Input').val( $('#Input').val() + 'q') }, CHORD_TIME+100);
             }
-            chordTime = e.timeStamp + CHORD_TIME;
-
+            chordTime = ts + CHORD_TIME;
+            output(chordTime);
             return false;
         }
-        output(chordTime);
+        
     });
 
     $('#Input').focus();
