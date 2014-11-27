@@ -44,7 +44,7 @@ $(function() {
 
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height() / 2;
+        var height = $(window).height() * (2.0/3.0);
         $('#Input').height(height-100).width(width);
         $('#Output').height(100).width(width);
         output('height: ' + height + ' width: ' + width);
@@ -77,7 +77,7 @@ $(function() {
 
     var fireChord = function(key) {
         output('chord hit ' + key);
-        if (key == 'x') {
+        if (key == 88 /* 'x' */) {
             runScript();
         }
     }
@@ -100,14 +100,14 @@ $(function() {
         var keyCode = (e.keyCode ? e.keyCode : e.which);
         output(keyCode);
         if (chordWait) {
-            fireChord(e.key);
+            fireChord(keyCode);
             clearInterval(helpTimer);
             $('#Help').hide();
             chordWait = false;
+            e.preventDefault();
             return false;
         }
-        output(keyCode);
-        if (e.key == 'q') {
+        if (e.keyCode == 81) {
             var ts = $.now();
             if (chordTime != 0 && ts < chordTime) {
                 chordWait = true;
@@ -118,6 +118,7 @@ $(function() {
             }
             chordTime = ts + CHORD_TIME;
             output(chordTime);
+            e.preventDefault();
             return false;
         }
         
