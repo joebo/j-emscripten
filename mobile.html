@@ -1,0 +1,183 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>J interpreter</title>
+    <script src="jquery-1.7.1.min.js"></script>
+    </head>
+<body>
+
+<script type="text/javascript">
+  var myterm = false;
+  var Module = {
+    noInitialRun: true,
+    noExitRuntime: true,
+    preRun: [],
+    postRun: [],
+    print: (function() {
+        return function(text) {
+            console.log(text);
+            $('#Output').val(text);
+        };
+    })()
+  };
+</script>
+<script type="text/javascript" src="j-formatted.min.js"></script>
+<script type="text/javascript">
+  var process = Module.cwrap('process_wrapper', null, ['string']);
+</script>
+
+<textarea id="Input"></textarea>
+<textarea id="Output"></textarea>
+
+<script>
+$(function() {
+  Module.ccall('main', null, null, null);
+  process("smoutput=: 0 0 $ 1!:2&2");
+
+    var output = function(text) {
+        $('#Output').val( text + '\n' + $('#Output').val());
+    }
+    var resize = function() {
+        var width = $(window).width()-35;
+        var height = $(window).height()-35;
+        $('#Input').height(height-100).width(width);
+        $('#Output').height(100).width(width);
+        output('height: ' + height + ' width: ' + width);
+        return false;
+    }
+    output('started');
+    $(window).resize(resize);
+    resize();
+
+    var runScript = function() {
+        var jtinpl = Module.cwrap('jtinpl', 'number', ['number', 'number', 'number', 'string'])
+        var a=HEAP32[31136];
+        var noun='input_jfe_';
+
+        txt=$('#Input').val();
+
+        var jtnfs = Module.cwrap('jtnfs', 'number', ['number', 'number', 'string'])
+        var script = jtinpl(a, 0, txt.length, txt);
+        var jt_global = HEAP32[a+204520>>2];
+        
+        var ret = _jtsymbis(a, jtnfs(a,noun.length,noun),script, jt_global)
+
+        process('(0!:100) ' + noun);
+    }
+
+    $('#Clear').click(function() {
+        $('#Input').val('');
+    });
+
+    var fireChord = function(key) {
+        output('chord hit ' + key);
+        if (key == 'x') {
+            runScript();
+        }
+    }
+    var chordTime = 0;
+    var chordWait = false;
+    var helpTimer = 0;
+
+    var showHelp = function() {
+        output('showing help');
+        $('#Help').show();
+    }
+
+    var noChordTimer = 0;
+    var CHORD_TIME = 500;
+
+    $('#Input').keypress(function(e) {
+        if (noChordTimer) { clearInterval(noChordTimer) }
+
+        if (chordWait) {
+            fireChord(e.key);
+            clearInterval(helpTimer);
+            $('#Help').hide();
+            chordWait = false;
+            return false;
+        }
+
+        if (e.key == 'q') {
+            if (chordTime != 0 && e.timeStamp < chordTime) {
+                chordWait = true;
+                if (helpTimer) { clearInterval(helpTimer); }
+                helpTimer = setTimeout(showHelp, 2000);
+            } else {
+                noChordTimer = setTimeout(function() { $('#Input').val( $('#Input').val() + 'q') }, CHORD_TIME+100);
+            }
+            chordTime = e.timeStamp + CHORD_TIME;
+
+            return false;
+        }
+    });
+
+    $('#Input').focus();
+    $('#Input').val('');
+    $('#Output').val('');
+});
+
+
+var rank = function(f) { return HEAP32[16+f>>2] }
+var shape = function(f) { return HEAP32[20+f>>2] }
+var ravelPtr = function(f) { return HEAP32[f>>2]; }
+var val = function(f,size,idx) {
+    return HEAP32[(ravelPtr(f) + (idx*size) +f)>>2];
+}
+var typei = function(f) { return HEAP32[12+f>>2] };
+
+var INT=1;
+var LIT=2;
+var ARR=4;
+var BOX=32;
+
+FUNCTION_TABLE[3295] = function(a,f,d) {
+    var x ='';
+    var y = '';
+    
+    if (typei(f) == LIT)
+        x = Pointer_stringify(f+ravelPtr(f),shape(f));
+    if (typei(d) == LIT)
+        y = Pointer_stringify(d+ravelPtr(d),shape(d));
+
+    if (typei(f) == INT)
+        x = val(f,4,0);
+
+    if (typei(d) == INT) {
+        //y = Array.apply(null, Array(shape(d))).map(function(_,i) { return val(d, 4, i) });
+        //y = HEAP32.subarray(d+ravelPtr(d)>>2,d+ravelPtr(d)+shape(d)>>2);
+        y = val(d,4,0);
+    }
+
+    //note: there is strange behavior if y is 1 or 0 array
+    if (typei(d) == ARR) {
+        y = Array.apply(null, Array(shape(d))).map(function(_,i) { return val(d, 4, i) });
+    }
+    console.log(typei(d));
+    
+    if (x=='alert') {
+        alert(y);
+        a = HEAP32[31136];
+        z = _jtga(a,INT,1,0);
+        HEAP32[z+HEAP32[z>>2]>>2] = 1;
+        return z;
+    }
+    if (x=='drawRect') {
+        console.log(y);
+        var canvas = document.getElementById("Canvas");
+        var ctx = canvas.getContext("2d");
+        ctx.fillRect(y[0],y[1],y[2],y[3])
+        console.log(y);
+    }
+}
+
+
+
+</script>
+<div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;">
+    x = run
+</div>
+
+</body>
+</html>
+    
