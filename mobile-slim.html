@@ -45,7 +45,7 @@ $(function() {
 
     var resize = function() {
         var width = $(window).width()-35;
-        var height = $(window).height()-300;
+        var height = $(window).height()-100;
         $('#Input').height(height-100).width(width);
         $('#Output').height(100).width(width);
         return false;
@@ -54,6 +54,7 @@ $(function() {
     output('started');
     resize();
 
+    var mode = '111';
     var runScript = function() {
         var jtinpl = Module.cwrap('jtinpl', 'number', ['number', 'number', 'number', 'string'])
         var a=HEAP32[31136];
@@ -68,7 +69,7 @@ $(function() {
         var ret = _jtsymbis(a, jtnfs(a,noun.length,noun),script, jt_global)
 
         $('#Output').val('');
-        process('(0!:100) ' + noun);
+        process('(0!:' + mode + ') ' + noun);
     }
 
     $('#Clear').click(function() {
@@ -142,6 +143,9 @@ $(function() {
         if (key  == 76 /* l */) {
             var pos = $('#Input')[0].selectionStart;
             $('#Input').selectRange(pos+1,pos+1);
+        }
+        if (key == 80) {
+            mode = '100'; //hide output
         }
 
     }
@@ -256,9 +260,9 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
     <ul>
     <li>x = run</li>
     <li>s = shrink input</li>
-    <li>S = expand input</li>
+    <li>v = expand input</li>
     <li>c = clear output window</li>
-    <li>a = select input text, A = select output text</li>
+    <li>a = select input text</li>
     <li>d = show canvas window</li>
     <li>1 = preset 1 (canvas example)</li>
     <li>0 = preset 0 (smoutput example)</li>
