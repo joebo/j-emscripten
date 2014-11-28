@@ -7,6 +7,7 @@
       body { font-family: arial; }
       textarea { font-size: 16px!important}
       textarea:focus { font-size: 16px!important}
+      ul { margin:0;}
     </style>
 
     </head>
@@ -95,60 +96,13 @@ $(function() {
             }
         });
     };
-    var fireChord = function(key) {
-        //output('chord hit ' + key);
-        if (key == 88 /* 'x' */) {
-            runScript();
-        }
-        if (key == 86 /* v */) {
-            $('#Input').height($('#Input').height()+100);
-        }
-        if (key == 83 /* S */) {
-            $('#Input').height($('#Input').height()-100);
-        }
-        if (key == 67 /* c */) {
-            $('#Output').val('');
-        }
-        if (key == 65 /* a */) {
-            $('#Input').select();
-        }
-        if (key == 16 /* A */) {
-            $('#Output').select();
-        }
-        if (key == 68 /* d */) {
-            $('#CanvasDialog').show();
-        }
-        if (key == 49 /* 1 */) {
-            $('#Input').val( $('#Input').val() + "'drawRect' (15!:0) (10,10,100,100)\n")
-            $('#CanvasDialog').show();
-            runScript();
-        }
-        if (key == 48 /* 0 */) {
-            $('#Output').val('');
-            $('#Input').val( $('#Input').val() + 'smoutput <"0 i.5\n')
-            runScript();
-        }
-        if (key == 79 /* o */) {
-            $('#Input').val( $('#Input').val() + "smoutput ")
-        }
-        if (key == 89 /* y */) {
-            var line = getLineNumber($('#Input')[0])-1;
-            var lines = $.grep($('#Input').val().split('\n'), function(x,i) { return i != line }).join("\n");
-            $('#Input').val(lines);
-        }
-        if (key  == 72 /* k */) {
-            var pos = $('#Input')[0].selectionStart;
-            $('#Input').selectRange(pos-1,pos-1);
-        }
-        if (key  == 76 /* l */) {
-            var pos = $('#Input')[0].selectionStart;
-            $('#Input').selectRange(pos+1,pos+1);
-        }
-        if (key == 80) {
-            mode = '100'; //hide output
-        }
 
-    }
+
+
+    var keyCodeToChar = {8:"Backspace",9:"Tab",13:"Enter",16:"Shift",17:"Ctrl",18:"Alt",19:"Pause/Break",20:"Caps Lock",27:"Esc",32:"Space",33:"Page Up",34:"Page Down",35:"End",36:"Home",37:"Left",38:"Up",39:"Right",40:"Down",45:"Insert",46:"Delete",48:"0",49:"1",50:"2",51:"3",52:"4",53:"5",54:"6",55:"7",56:"8",57:"9",65:"A",66:"B",67:"C",68:"D",69:"E",70:"F",71:"G",72:"H",73:"I",74:"J",75:"K",76:"L",77:"M",78:"N",79:"O",80:"P",81:"Q",82:"R",83:"S",84:"T",85:"U",86:"V",87:"W",88:"X",89:"Y",90:"Z",91:"Windows",93:"Right Click",96:"Numpad 0",97:"Numpad 1",98:"Numpad 2",99:"Numpad 3",100:"Numpad 4",101:"Numpad 5",102:"Numpad 6",103:"Numpad 7",104:"Numpad 8",105:"Numpad 9",106:"Numpad *",107:"Numpad +",109:"Numpad -",110:"Numpad .",111:"Numpad /",112:"F1",113:"F2",114:"F3",115:"F4",116:"F5",117:"F6",118:"F7",119:"F8",120:"F9",121:"F10",122:"F11",123:"F12",144:"Num Lock",145:"Scroll Lock",182:"My Computer",183:"My Calculator",186:";",187:"=",188:",",189:"-",190:".",191:"/",192:"`",219:"[",220:"\\",221:"]",222:"'"};
+
+
+    
     var chordTime = 0;
     var chordWait = false;
     var helpTimer = 0;
@@ -159,17 +113,99 @@ $(function() {
     }
 
     var noChordTimer = 0;
-    var CHORD_TIME = 750;
+    var CHORD_TIME = 1000;
 
+    function fireChordKeys(keys) {
+        if (keys == 'QR') {
+            runScript();
+        }
+        else if (keys == 'QQX') {
+            runScript();
+        }
+        else if (keys == 'QIV') {
+            $('#Input').height($('#Input').height()+50);
+        }
+        else if (keys == 'QIS') {
+            $('#Input').height($('#Input').height()-50);
+        }
+        else if (keys == 'QIC') {
+            $('#Input').val('');
+        }
+        else if (keys == 'QIA') {
+            $('#Input').select();
+        }
+        else if (keys == 'QOV') {
+            $('#Output').height($('#Output').height()+50);
+        }
+        else if (keys == 'QOS') {
+            $('#Output').height($('#Output').height()-50);
+        }
+        else if (keys == 'QOC') {
+            $('#Output').val('');
+        }
+        else if (keys == 'QOA') {
+            $('#Output').select();
+        }
+
+        else if (keys == 'QCD') {
+            $('#CanvasDialog').show();
+        }
+        else if (keys == 'QP1') {
+            $('#Input').val( $('#Input').val() + "'drawRect' (15!:0) (10,10,100,100)\n")
+            $('#CanvasDialog').show();
+            runScript();
+        }
+        else if (keys == 'QP0') {
+            $('#Output').val('');
+            $('#Input').val( $('#Input').val() + 'smoutput <"0 i.5\n')
+            runScript();
+        }
+        else if (keys == 'QP2') {
+            $('#Input').val( $('#Input').val() + "smoutput ")
+        }
+        else if (keys == 'QQY') {
+            var line = getLineNumber($('#Input')[0])-1;
+            var lines = $.grep($('#Input').val().split('\n'), function(x,i) { return i != line }).join("\n");
+            $('#Input').val(lines);
+        }
+        else if (keys == 'QMH') {
+            var pos = $('#Input')[0].selectionStart;
+            $('#Input').selectRange(pos-1,pos-1);
+        }
+        else if (keys  == 'QML') {
+            var pos = $('#Input')[0].selectionStart;
+            $('#Input').selectRange(pos+1,pos+1);
+        }
+        else if (keys == 'QTO') {
+            if (mode == '111') {
+                mode = '100'
+            } else {
+                mode = '111';
+            }
+            output('mode is now 0!:' + mode);
+        }
+
+    }
+
+    var chord='';
     
-    $('#Input').on('keydown', function(e) {
+    $('#Input, #Output').on('keydown', function(e) {
         $('#CanvasDialog').hide();
         if (noChordTimer) { clearInterval(noChordTimer) }
 
         var keyCode = (e.keyCode ? e.keyCode : e.which);
+        var key = keyCodeToChar[keyCode];
         //output(keyCode);
+
+        var ts = $.now();
+
+        var fire = false;
+
         if (chordWait) {
-            fireChord(keyCode);
+            chord+=key;
+            //console.log(chord);
+            fireChordKeys(chord);
+            
             clearInterval(helpTimer);
             $('#Help').hide();
             chordWait = false;
@@ -177,17 +213,39 @@ $(function() {
             return false;
         }
         if (e.keyCode == 81) {
-            var ts = $.now();
             if (chordTime != 0 && ts < chordTime) {
+                chord = chord + 'Q';
                 chordWait = true;
                 if (helpTimer) { clearInterval(helpTimer); }
                 helpTimer = setTimeout(showHelp, 2000);
             } else {
                 noChordTimer = setTimeout(function() { $('#Input').val( $('#Input').val() + 'q') }, CHORD_TIME+100);
+                chord = 'Q';
             }
             chordTime = ts + CHORD_TIME;
             e.preventDefault();
             return false;
+        }
+        else if (chordTime != 0 && ts < chordTime) {
+            var startChord = false;
+            if (key == 'R') {
+                chord = chord + key;
+                fire = true;
+            }
+            if (key == 'I' || key == 'O' || key == 'P' || key == 'M' || key == 'C' || key == 'T') {
+                startChord = true;
+            }
+
+            if (startChord) {
+                chord+=key;
+                chordWait = true;
+                chordTime = ts + CHORD_TIME;
+                e.preventDefault();
+            }
+            if (fire) {
+                fireChordKeys(chord);
+                e.preventDefault();
+            }
         }
         
     });
@@ -255,19 +313,32 @@ FUNCTION_TABLE[3295] = function(a,f,d) {
 
 </script>
 <div id="Help" style="display:none;z-index:1000;float:left;position:absolute;top:40px;left:40px;border:3px solid black;padding:10px;background-color:#f0f0f0;width:700px">
-  To maximize screen space, all commands are executed with chords. The default chord is qq. To execute a command type qq quickly and then the chord key.<br>
-  Keys:
+  To maximize screen space, all commands are executed by a sequence of keys. qq brings up help.
+  General Keys:
     <ul>
-    <li>x = run</li>
-    <li>s = shrink input</li>
-    <li>v = expand input</li>
-    <li>c = clear output window</li>
-    <li>a = select input text</li>
-    <li>d = show canvas window</li>
-    <li>1 = preset 1 (canvas example)</li>
-    <li>0 = preset 0 (smoutput example)</li>
-    <li>o = add smoutput</li>
-    <li>y = kill current line</li>
+    <li>qr or qqx = run</li>
+    <li>qqy = kill current line</li>
+    <li>qto = toggle output of script in window (off means you must use smoutput)</li>
+    </ul>
+    Window Keys (prefix is qo or qi -- mnemonic of i for input or o for output)
+    <ul>
+    <li>qis / qos = shrink</li>
+    <li>qiv / qov = expand</li>
+    <li>qic / qoc = clear</li>
+    <li>qia / qoa = select</li>
+    </ul>
+    Canvas Keys (prefix is qc)
+    <ul>
+    <li>qcd = show canvas window</li>
+    </ul>
+    Preset Keys (prefix qp)
+    <ul>
+    <li>qp1 = preset 1 (canvas example)</li>
+    <li>qp0 = preset 0 (smoutput example)</li>
+    <li>qpo = add smoutput</li>
+    </ul>
+    Movement keys (prefix qm)
+    <ul>
     <li>h = move left, l = move right</li>
     </ul>
 </div>
