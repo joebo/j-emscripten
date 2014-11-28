@@ -5,6 +5,8 @@
     <script src="jquery-1.7.1.min.js"></script>
     <style>
       body { font-family: arial; }
+      textarea { font-size: 16px!important}
+      textarea:focus { font-size: 16px!important}
     </style>
 
     </head>
@@ -50,7 +52,6 @@ $(function() {
     }
     
     output('started');
-    $(window).resize(resize);
     resize();
 
     var runScript = function() {
